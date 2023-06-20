@@ -37,3 +37,5 @@ index.css: deteled all
 index.css body background-color and color. 
 Added views and components folders. 
 Replaced ReactStrictMode for BrowserRouter
+
+posicionamiento en ghithub
