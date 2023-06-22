@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
           },
           category: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
           },
     },
     {timestamps: false}
