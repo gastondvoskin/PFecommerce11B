@@ -1,7 +1,357 @@
 const foods = [
   {
+    name: "Cinta de garbanzo con espinas y salsa de setas portobello",
+    diets: ["Sin TACC", "Vegano"],
+    image:
+      "https://content-cocina.lecturas.com/medio/2023/04/24/cintas_de_garbanzo_con_espinacas_y_salsa_de_setas_portobello_7f4208fc_1200x1200.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "Pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta de camarones y vino blanco",
+    diets: ["Sin TACC"],
+    image:
+      "https://www.cuerpomente.com/medio/2023/06/01/delicias-de-raviolis-de-maiz-con-relleno-de-setas-portobello-y-boletus-a-la-trufa_00000000_230601170012_1063x718.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Delicia de Raviolis de maíz con relleno de setas portobello y boletus a la trufa",
+    diets: ["Vegetariano"],
+    image:
+      "https://www.cuerpomente.com/medio/2023/06/01/panzerotti-o-medialunas-de-arroz-con-relleno-de-pera-y-ricotta_00000000_230601103938_1063x717.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Panzerotti o meidalunas de arroz con relleno de pera y ricotta",
+    diets: ["Sin TACC", "Vegetariano", "Vegano"],
+    image:
+      "https://www.cuerpomente.com/medio/2023/06/01/tallarines-de-trigo-sarraceno-integral-con-salsa-arrabbiata_00000000_230601103730_1063x718.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Tallarines de trigo sarraceno integral con salsa arrabiata ",
+    diets: ["Vegetariano", "Vegano"],
+    image:
+      "https://www.cuerpomente.com/medio/2023/06/01/noquis-de-patata-y-trigo-sarraceno-con-salsa-pesto-de-rucula-y-nueces_00000000_230601103837_1063x717.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Raviolones caseros",
+    diets: ["Sin TACC"],
+    image:
+      "https://www.cuerpomente.com/medio/2023/06/01/noquis-de-patata-y-trigo-sarraceno-con-salsa-pesto-de-rucula-y-nueces_00000000_230601103837_1063x717.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta con atún en salsa de chipotle",
+    diets: ["Sin TACC", "Sin Lactosa"],
+    image:"https://www.lucchetti.com.mx/wp-content/uploads/2019/03/DESKTOP_MOBILE_imagenes_de_1024x683-5.png",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta rellena",
+    diets: ["Vegetariano"],
+    image:
+      "https://img-global.cpcdn.com/recipes/7041b21955686cf2/1360x964cq70/pasta-rellenas-sin-tacc-sin-gluten-vegan-foto-principal.webp",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta con salteado de verduras",
+    diets: ["Vegetariano", "Vegano"],
+    image:
+      "https://img-global.cpcdn.com/recipes/6e877bb633a841aa/1360x964cq70/pastas-con-salteado-de-verduras-sin-gluten-foto-principal.webp",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Fideos de arroz con vegetales horneados",
+    diets: ["Sin TACC", "Vegetariano", "Vegano"],
+    image:
+      "https://img-global.cpcdn.com/recipes/bcf9698a5a0fdeb4/1360x964cq70/fideos-de-arroz-con-vegetales-horneados-pasta-apta-celiacos-foto-principal.webp",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Tagliatelle con salsa de seitán con manzanas",
+    diets: ["Vegetariano"],
+    image:
+      "https://saborgourmet.com/wp-content/uploads/recetas-de-pasta-vegana-Tagliatelle-con-salsa-de-seit%C3%A1n-con-manzanas-istock-600x294.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Tallarines con té de matcha y regú de zanahoria dulce",
+    diets: ["Sin Lactosa"],
+    image:
+      "https://saborgourmet.com/wp-content/uploads/recetas-de-pasta-vegana-Tagliatelle-con-t%C3%A9-matcha-y-ragu-de-zanahoria-dulce-istock.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Penne con pesto de tomate seco",
+    diets: ["Vegetariano"],
+    image:
+      "https://saborgourmet.com/wp-content/uploads/recetas-de-pasta-vegana-Penne-con-pesto-de-tomate-seco-istock-600x323.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Tortiglioni con uvas y pan rallado",
+    diets: ["Sin Lactosa", "Vegetariano"],
+    image:
+      "https://saborgourmet.com/wp-content/uploads/recetas-de-pasta-vegana-Tortiglioni-con-uvas-y-pan-rallado-istock-600x289.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Tortiglioni con coles de bruselas y col negra",
+    diets: ["Sin Lactosa"],
+    image:
+      "https://saborgourmet.com/wp-content/uploads/recetas-de-pasta-vegana-Tortiglioni-con-brotes-y-col-negra-istock-600x288.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta con pesto de pistachos",
+    diets: ["Vegetariano"],
+    image:
+      "https://saborgourmet.com/wp-content/uploads/recetas-de-pasta-vegana-Pasta-con-pesto-de-pistachos-istock-600x294.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta con aceitunas y tomates secos y piñones",
+    diets: ["Vegetariano"],
+    image:
+      "https://saborgourmet.com/wp-content/uploads/recetas-de-pasta-vegana-Pasta-con-aceitunas-y-tomates-secos-y-pi%C3%B1ones-istock-600x280.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta alfredo vegana",
+    diets: ["Vegano"],
+    image:
+      "https://danzadefogones.com/wp-content/uploads/2014/04/Pasta-Alfredo-vegana-danzadefogones.com-vegan-pasta-alfredo-gf.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Boloñesa de lentejas",
+    diets: ["Vegetariano"],
+    image:
+      "https://danzadefogones.com/wp-content/uploads/2017/06/BoloC3B1esa-de-lentejas-4.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Espaguetis con salsa verde de coco",
+    diets: ["Sin Lactosa", "Vegetariano"],
+    image:
+      "https://danzadefogones.com/wp-content/uploads/2018/07/Espaguetis-con-salsa-verde-de-coco.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta con salsa de pimientos del piquillo",
+    diets: ["Vegetariano", "Vegano"],
+    image:
+      "https://danzadefogones.com/wp-content/uploads/2015/02/Pasta-con-salsa-de-pimientos-del-Piquillo-2.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta arrabiata",
+    diets: ["Vegano"],
+    image:
+      "https://danzadefogones.com/wp-content/uploads/2017/08/Pasta-arrabiata-3.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta Primavera",
+    diets: ["Vegetariano"],
+    image:
+      "https://danzadefogones.com/wp-content/uploads/2018/03/Pasta-primavera-2.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Espaguetis a la carbonada",
+    diets: ["Sin Lactoda"],
+    image:
+      "https://www.recetassinlactosa.com/wp-content/uploads/2015/06/Espaguetis-Carbonara-1.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+  {
+    name: "Pasta alfredo",
+    diets: ["Vegetariano"],
+    image:
+      "https://kaikusinlactosa.com/blog/wp-content/uploads/2016/06/Kaiku-Sin-Lactosa-Cocina-Facil-Sin-Lactosa.jpg",
+    description:
+      "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
+    category: "pasta",
+    initial_price: 50,
+    discount: 0,
+    final_price: 50,
+    status: true,
+    total_score: 0,
+  },
+
+  {
     name: "Bistec a la parrilla",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Un jugoso bistec a la parrilla con sabrosas especias y acompañamientos.",
     image:
@@ -15,7 +365,7 @@ const foods = [
   },
   {
     name: "Chuletas de cerdo al horno",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Deliciosas chuletas de cerdo horneadas con hierbas y condimentos, acompañadas de guarniciones.",
     image:
@@ -29,7 +379,7 @@ const foods = [
   },
   {
     name: "Filete mignon con salsa de champiñones",
-    diet: ["Sin TACC"],
+    diets: ["Sin TACC"],
     description:
       "Un exquisito filete mignon acompañado de una deliciosa salsa de champiñones.",
     image:
@@ -43,7 +393,7 @@ const foods = [
   },
   {
     name: "Albóndigas en salsa de tomate",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Sabrosas albóndigas caseras en una deliciosa salsa de tomate, perfectas para acompañar pasta o arroz.",
     image:
@@ -57,7 +407,7 @@ const foods = [
   },
   {
     name: "Lomo de res a la provenzal",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Un jugoso lomo de res marinado con hierbas provenzales y especias, perfecto para los amantes de la carne.",
     image:
@@ -71,11 +421,11 @@ const foods = [
   },
   {
     name: "Costillas de cerdo BBQ",
-    diet: ["Sin TACC"],
+    diets: ["Sin TACC"],
     description:
       "Deliciosas costillas de cerdo asadas a la parrilla con una irresistible salsa barbacoa casera.",
     image:
-      "https://t1.uc.ltmcdn.com/es/posts/3/9/5/como_hacer_costillas_bbq_en_sarten_50593_orig.jpg",
+      "http://locosxlaparrilla.com/wp-content/uploads/2015/02/costillas-cerdo-marinada-macerar-parrilla-barbacoa-locosxlaparrilla.jpg",
     initial_price: 10,
     discount: 0,
     final_price: 10,
@@ -85,7 +435,7 @@ const foods = [
   },
   {
     name: "Pollo a la parrilla con limón y hierbas",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Jugoso pollo a la parrilla sazonado con limón, hierbas aromáticas y especias, acompañado de ensalada fresca.",
     image:
@@ -99,7 +449,7 @@ const foods = [
   },
   {
     name: "Carne asada estilo argentino",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Un clásico corte de carne asada a la parrilla al estilo argentino, tierno y lleno de sabor.",
     image:
@@ -113,7 +463,7 @@ const foods = [
   },
   {
     name: "Estofado de ternera con verduras",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Un reconfortante estofado de ternera con tiernos trozos de carne y verduras en un sabroso caldo.",
     image:
@@ -127,7 +477,7 @@ const foods = [
   },
   {
     name: "Tacos de carne al pastor",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Deliciosos tacos rellenos de carne marinada al pastor, acompañados de cebolla, cilantro y salsa.",
     image:
@@ -141,7 +491,7 @@ const foods = [
   },
   {
     name: "Fajitas de carne con pimientos y cebolla",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Fajitas de carne marinadas en especias y jugo de limón, salteadas con pimientos y cebolla en una sartén caliente.",
     image:
@@ -155,7 +505,7 @@ const foods = [
   },
   {
     name: "Pechuga de pollo rellena de jamón y queso",
-    diet: ["Sin TACC"],
+    diets: ["Sin TACC"],
     description:
       "Pechuga de pollo jugosa rellena de jamón y queso, horneada hasta obtener un dorado perfecto y acompañada de una salsa suave.",
     image: "https://www.annarecetasfaciles.com/files/cordon-bleub.jpg",
@@ -168,7 +518,7 @@ const foods = [
   },
   {
     name: "Asado de tira al chimichurri",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Un suculento asado de tira marinado en chimichurri argentino, asado a la parrilla y lleno de sabor.",
     image:
@@ -182,7 +532,7 @@ const foods = [
   },
   {
     name: "Cordero al horno con hierbas",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Tierno cordero asado al horno con hierbas aromáticas y especias, perfecto para una ocasión especial.",
     image:
@@ -196,7 +546,7 @@ const foods = [
   },
   {
     name: "Pollo al curry con arroz",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Pollo tierno cocinado en una sabrosa salsa de curry, acompañado de arroz aromático y verduras salteadas.",
     image:
@@ -210,7 +560,7 @@ const foods = [
   },
   {
     name: "Tacos de carne deshebrada",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Tacos deliciosos rellenos de carne deshebrada sazonada con especias y condimentos, acompañados de tu salsa favorita.",
     image:
@@ -224,7 +574,7 @@ const foods = [
   },
   {
     name: "Pavo asado con relleno de hierbas",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Pavo jugoso asado al horno con un relleno de hierbas aromáticas, perfecto para celebraciones y festividades.",
     image: "https://enrilemoine.com/wp-content/uploads/2011/11/5-MG_2068.jpg",
@@ -237,7 +587,7 @@ const foods = [
   },
   {
     name: "Carne guisada con patatas",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Carne tierna y jugosa guisada a fuego lento con patatas, cebolla, zanahorias y especias, un plato reconfortante.",
     image:
@@ -251,7 +601,7 @@ const foods = [
   },
   {
     name: "Lomo de cerdo a la mostaza",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Lomo de cerdo jugoso y tierno marinado con mostaza y hierbas, asado a la perfección y servido con una salsa irresistible.",
     image:
@@ -265,7 +615,7 @@ const foods = [
   },
   {
     name: "Pechuga de pollo a la plancha con ensalada",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Pechuga de pollo a la plancha jugosa y tierna, servida con una fresca ensalada de vegetales y aderezo ligero.",
     image:
@@ -279,7 +629,7 @@ const foods = [
   },
   {
     name: "Empanadas de carne argentinas",
-    diet: ["Sin Lactosa"],
+    diets: ["Sin Lactosa"],
     description:
       "Deliciosas empanadas argentinas rellenas de carne jugosa, cebolla, aceitunas y especias, horneadas hasta obtener un dorado perfecto.",
     image:
@@ -293,7 +643,7 @@ const foods = [
   },
   {
     name: "Shawarma de carne de cordero",
-    diet: ["Sin TACC", "Sin Lactosa"],
+    diets: ["Sin TACC", "Sin Lactosa"],
     description:
       "Shawarma de carne de cordero tierna y sabrosa, marinada con especias y asada en un asador vertical, servida con pan pita y salsas.",
     image:
@@ -307,7 +657,7 @@ const foods = [
   },
   {
     name: "Ensalada de espinacas",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una deliciosa ensalada de espinacas frescas con tomates cherry, aguacate, nueces y aderezo de vinagreta balsámica.",
     image:
@@ -321,7 +671,7 @@ const foods = [
   },
   {
     name: "Ensalada César",
-    diet: ["Vegetariano"],
+    diets: ["Vegetariano"],
     description:
       "La clásica ensalada César con lechuga romana, crutones, queso parmesano y aderezo César cremoso.",
     image:
@@ -335,7 +685,7 @@ const foods = [
   },
   {
     name: "Ensalada de quinoa",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una nutritiva ensalada de quinoa con vegetales frescos, aceitunas, pepino y aderezo de limón y cilantro.",
     image:
@@ -349,7 +699,7 @@ const foods = [
   },
   {
     name: "Ensalada Caprese",
-    diet: ["Sin TACC", "Vegetariano"],
+    diets: ["Sin TACC", "Vegetariano"],
     description:
       "Una ensalada Caprese clásica con tomates frescos, mozzarella de búfala, hojas de albahaca y aceite de oliva.",
     image:
@@ -363,7 +713,7 @@ const foods = [
   },
   {
     name: "Ensalada de frutas",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una refrescante ensalada de frutas variadas como sandía, melón, uvas y piña, con un toque de menta fresca.",
     image:
@@ -377,7 +727,7 @@ const foods = [
   },
   {
     name: "Ensalada de garbanzos",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una ensalada de garbanzos con pepino, tomate, cebolla roja, pimiento y aderezo de yogur y comino.",
     image:
@@ -391,7 +741,7 @@ const foods = [
   },
   {
     name: "Ensalada de aguacate",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una ensalada de aguacate con tomate cherry, cilantro, cebolla roja y aliño de limón y aceite de oliva.",
     image:
@@ -405,7 +755,7 @@ const foods = [
   },
   {
     name: "Ensalada mixta",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una ensalada mixta clásica con lechuga, tomate, zanahoria, pepino y aderezo de vinagreta casera.",
     image: "https://imag.bonviveur.com/imagen-de-la-ensalada-mixta.jpg",
@@ -418,7 +768,7 @@ const foods = [
   },
   {
     name: "Ensalada de zanahoria rallada",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una ensalada fresca de zanahoria rallada con pasas, nueces, cilantro y aderezo de limón y miel.",
     image:
@@ -432,7 +782,7 @@ const foods = [
   },
   {
     name: "Ensalada de tomate y mozzarella",
-    diet: ["Vegetariano"],
+    diets: ["Vegetariano"],
     description:
       "Una ensalada clásica de tomate y mozzarella con hojas de albahaca fresca y aceite de oliva virgen extra.",
     image:
@@ -446,7 +796,7 @@ const foods = [
   },
   {
     name: "Ensalada Waldorf",
-    diet: ["Vegetariano"],
+    diets: ["Vegetariano"],
     description:
       "Una ensalada Waldorf tradicional con apio, manzanas, uvas, nueces y aderezo de yogur y mayonesa.",
     image:
@@ -460,7 +810,7 @@ const foods = [
   },
   {
     name: "Ensalada de pepino y yogur",
-    diet: ["Vegetariano"],
+    diets: ["Vegetariano"],
     description:
       "Una ensalada refrescante de pepino con yogur griego, ajo, eneldo y un toque de jugo de limón.",
     image:
@@ -474,7 +824,7 @@ const foods = [
   },
   {
     name: "Ensalada de remolacha",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una colorida ensalada de remolacha asada con rúcula, queso de cabra, nueces y aderezo de vinagreta balsámica.",
     image:
@@ -488,7 +838,7 @@ const foods = [
   },
   {
     name: "Ensalada de pasta",
-    diet: ["Vegetariano"],
+    diets: ["Vegetariano"],
     description:
       "Una ensalada de pasta fría con vegetales mixtos, aceitunas, queso feta y aderezo de aceite y vinagre.",
     image:
@@ -502,7 +852,7 @@ const foods = [
   },
   {
     name: "Ensalada griega",
-    diet: ["Vegetariano"],
+    diets: ["Vegetariano"],
     description:
       "Una ensalada griega clásica con pepino, tomate, cebolla roja, aceitunas kalamata y queso feta.",
     image:
@@ -516,7 +866,7 @@ const foods = [
   },
   {
     name: "Ensalada de col rizada",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una saludable ensalada de col rizada con manzanas, nueces, pasas y aderezo de vinagreta de mostaza y miel.",
     image:
@@ -530,7 +880,7 @@ const foods = [
   },
   {
     name: "Ensalada de lentejas",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una satisfactoria ensalada de lentejas con vegetales, cilantro, limón y un aliño de aceite de oliva y comino.",
     image:
@@ -544,7 +894,7 @@ const foods = [
   },
   {
     name: "Ensalada de garbanzos y aguacate",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una combinación deliciosa de garbanzos, aguacate, tomates cherry, cebolla roja y aderezo de limón y cilantro.",
     image:
@@ -558,7 +908,7 @@ const foods = [
   },
   {
     name: "Ensalada de patatas",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una ensalada clásica de patatas con mayonesa, apio, cebolla, mostaza, eneldo y sal y pimienta al gusto.",
     image: "https://cocinaabuenashoras.com/files/ensalada-de-patatas.jpg",
@@ -571,7 +921,7 @@ const foods = [
   },
   {
     name: "Ensalada de rúcula y parmesano",
-    diet: ["Vegetariano"],
+    diets: ["Vegetariano"],
     description:
       "Una ensalada simple pero sabrosa de rúcula fresca, queso parmesano en láminas y aderezo de limón y aceite de oliva.",
     image: "https://queapetito.com/wp-content/uploads/2019/05/rucula-1.jpg",
@@ -584,7 +934,7 @@ const foods = [
   },
   {
     name: "Ensalada de naranja y aguacate",
-    diet: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
     description:
       "Una refrescante ensalada de naranja, aguacate, espinacas baby y aderezo de vinagreta de naranja y miel.",
     image:
@@ -598,8 +948,6 @@ const foods = [
   },
 ];
 
-
-
 module.exports = {
-  foods
-}
+  foods,
+};
