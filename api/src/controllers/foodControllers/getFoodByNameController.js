@@ -1,9 +1,7 @@
-const { getAllFoodController } = require("./allFoodControllers");
-
 
 const getFoodByNameController = async (name) => {
     
-    const allFood = await getAllFoodController();
+    const allFood = await Food.findAll();
     let results = await allFood.filter((food)=>food.name.toLowerCase().includes(name.toLowerCase()));
     return results.length !== 0
         ? results

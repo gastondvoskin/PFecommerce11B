@@ -1,8 +1,8 @@
-const { getFoodByNameController } = require('../controllers/foodControllers/FoodByNameController');
-const { getAllFoodController } = require('../controllers/foodControllers/allFoodControllers');
+const { getFoodByNameController } = require('../controllers/foodControllers/getFoodByNameController');
+const { getAllFoodController } = require('../controllers/foodControllers/getAllFoodController');
 const { postFoodController } = require('../controllers/foodControllers/postFoodController');
-const { deleteFoodControllers } = require('../controllers/foodControllers/deleteFoodControllers');
-const { putFoodController } = require('../controllers/foodControllers/putFoodControllers');
+const { deleteFoodControllers } = require('../controllers/foodControllers/deleteFoodController');
+const { putFoodController } = require('../controllers/foodControllers/putFoodController');
 
 
 const getFoodHandler = async (req, res) => {
