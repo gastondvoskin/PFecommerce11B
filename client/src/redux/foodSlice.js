@@ -107,6 +107,7 @@ export const {
   filterByDiet,
   setCategory,
   setDiet,
+  postFoods,
   editFoods,
   deleteFoods
 } = foodsSlice.actions;

@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-import { getAllFoods, getFoodsByName,orderFoods,activeFilteredFood,setOrder,setCurrentPage,filterByCategory,setCategory,setDiet,filterByDiet/* , getFoodById */ } from "./foodSlice.js";
+import { getAllFoods, getFoodsByName,orderFoods,activeFilteredFood,setOrder,setCurrentPage,filterByCategory,setCategory,setDiet,filterByDiet,postFoods/* , getFoodById */ } from "./foodSlice.js";
 
 
 export const getFoods = () => async (dispatch) => {
@@ -86,7 +86,7 @@ export const setDietAction = (payload) => async (dispatch) => {
 
 
 
-export const postFood=(input)=>async (dispatch)=> {
+export const postFoodAction=(input)=>async (dispatch)=> {
     try {
         const formData = new FormData();
         formData.append("name", input.name);

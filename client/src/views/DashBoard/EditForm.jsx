@@ -70,10 +70,17 @@ export default function EditForm(setEdited){
       const handleEdit=(e)=>{
         e.preventDefault();
         dispatch(putFoods(select));
-        alert(`Receta de ${select.name} modificada`)
+        alert(` Vianda: '${select.name}' modificada exitosamente`)
       }
-      const handleDelete=(e)=>{
+      const handleDelete= async (e) =>{
         e.preventDefault();
+        try {
+            await axios.delete(`http://localhost:3001/food/${id}`)  
+            alert(`Vianda: '${select.name}' eliminada correctamente `)
+        } catch (error) {
+            alert({error:error.message})
+        }
+        
       }
       const handleImageChange = (e) => {
         const file = e.target.files[0];
