@@ -84,8 +84,8 @@ export default function OrderOptions () {
             value={orderBy}
             >
                 <option value="" disabled hidden>Ordenar</option>
-                <option value="expensive">Precio (mayor a menor)</option>
-                <option value="cheap">Precio (menor a mayor)</option>
+                <option value="expensive">Precio (menor a mayor)</option>
+                <option value="cheap">Precio (mayor a menor)</option>
                 <option value="atoz"> A to Z</option>
                 <option value="ztoa">Z to A</option>
             </select>
