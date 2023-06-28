@@ -1,8 +1,10 @@
 // REQUIRE
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const router = require('./routes/indexRouter.js');
-
+// NO BORRAR DEPLOY
+// const { SERVER_URL } = process.env;
 
 /* const cors = require('cors'); */ /* new */
 
@@ -13,11 +15,11 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json())
 // MIDDLEWARE: CORS CONFIGURATION
-/* app.use(cors()); */ 
+/* app.use(cors()); */
 
 app.use((req, res, next) => {
   /* res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); */ /* old */
-  res.header('Access-Control-Allow-Origin', '*');   /* new. In the future, replace * with the production URL */
+  res.header('Access-Control-Allow-Origin', `*`);   /* new. In the future, replace * with the production URL */
   res.header('Access-Control-Allow-Credentials', 'true');       /* ?? */
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');     /* ?? */
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
