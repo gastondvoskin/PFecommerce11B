@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserDetail } from "../../redux/userSlice";
+import { getUserDetailCase } from "../../redux/userSlice";
 import { useParams } from "react-router-dom";
 
 
@@ -10,7 +10,7 @@ const MyProfile = () => {
     const { name } = useParams()
     const dispatch = useDispatch()
     useEffect(() =>{
-        dispatch(fetchUserDetail(name))
+        dispatch(getUserDetailCase(name))
     }, [name, dispatch])
     return (
         <div>

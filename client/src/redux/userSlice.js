@@ -8,35 +8,37 @@ export const userSlice = createSlice({
         userDetail: []
     },
     reducers: {
-        getAllUsers: (state, action) => {
+        getAllUsersCase: (state, action) => {
             state.allUsers = action.payload
         },
-        getUserByName: (state, action) => {
+        getUserByNameCase: (state, action) => {
             state.userDetail = action.payload
         },
     }
 })
 
-export const { getAllUsers, getUserByName  } = userSlice.actions;
+export const { getAllUsersCase, getUserByNameCase  } = userSlice.actions;
 
 export default userSlice.reducer;
 
-export const fetchAllUsers = () => async (dispatch) => {
+export const getAllUsersAction = () => async (dispatch) => {
     try {
         const allUsers =  await axios.get("http://localhost:3001/user")
         const usersData = allUsers.data
-        dispatch(getAllUsers(usersData))
+        dispatch(getAllUsersCase(usersData))
     }catch(error){
         console.log(error)
     }
 }
 
-export const fetchUserDetail = (name) => async (dispatch) => {
+export const getUserDetailCase = (name) => async (dispatch) => {
     try {
         const userById = await axios.get("http://localhost:3001/user?name=" + name)
         const userData = userById.data
-        dispatch(getUserByName(userData))
+        dispatch(getUserByNameCase(userData))
     } catch (error) {
         console.log(error)
     }
 }
+
+
