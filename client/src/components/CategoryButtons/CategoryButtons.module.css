@@ -1,0 +1,25 @@
+.pastas {
+    background-image: url("../../assets/categories/pastas.jpg");
+    background-size: cover;
+  }
+  
+  .meat {
+    background-image: url("../../assets/categories/meat.jpg");
+    background-size: cover;
+  }
+  
+  .salads {
+    background-image: url("../../assets/categories/salad.jpeg");
+    background-size: cover;
+  }
+  
+  .buttonsContainer button {
+    height: 200px;
+    width: 200px;
+    margin: 15px;
+  }
+  
+  .buttonsContainer button:hover {
+    box-shadow: 0 0 25px var(--accentColor);
+  }
+  

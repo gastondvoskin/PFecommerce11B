@@ -1,0 +1,100 @@
+.formContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px 5px 10px 5px;
+  padding-bottom: 10px;
+}
+.ButtonDB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+}
+.ButtonDB:hover {
+  transform: scale(0.95);
+}
+
+.SectionDB {
+  width: 600px;
+  height: auto;
+  border: 5px solid #426b1f;
+  background-color: white;
+  margin-bottom: 100px;
+}
+
+.InputNumberDB {
+  width: 50px;
+}
+
+.diets {
+  font-size: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+}
+.diets input[type="checkbox"] {
+  transform: scale(1.5);
+}
+
+.diets-container {
+  display: flex;
+  align-items: center;
+}
+
+.diets-container input[type="checkbox"] {
+  margin-left: 25px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.h3 {
+  margin-top: 10px;
+  margin-left: 30px;
+  font-size: 10px;
+}
+
+.image {
+  font-size: 15px;
+  margin-left: 30px;
+}
+
+.h3-title {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.errorMessage {
+  color: red;
+  margin-top: 15px;
+  font-size: 10px;
+}
+
+/* .logo {
+  width: 150px;
+  height: 150px;
+} */
+
+.inputTitle{
+  font-size: 28px;
+  width: 100%;
+}
+.card {
+  width: 269px;
+  height: 366px;
+  border-radius: 24px;
+  border: 2px solid #e6e6e6;
+  background: #fafaf5;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+}

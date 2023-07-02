@@ -1,0 +1,29 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.backHome {
+  margin: 15px;
+}
+
+.filtros {
+  width: 450px;
+  height: 100px;
+}
+
+.filtros2 {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.asereje {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+

@@ -1,0 +1,23 @@
+.searchBar {
+  width: 500px;
+  height: 45px;
+  background-color: #fff;
+  border: 3px solid darkgray;
+  border-radius: 15px;
+  line-height: 45px;
+  transition: 0.3s ease all;
+  font-size: 15px;
+  margin: 15px;
+}
+
+.searchBar:focus {
+  border: 3px solid var(--accentColor);
+  outline: none;
+  box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.magnifyingGlass {
+  width: 43px;
+  height: 43px;
+  margin: 5px;
+}

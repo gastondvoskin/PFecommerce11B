@@ -1,0 +1,10 @@
+https://redux-toolkit.js.org/tutorials/quick-start#install-redux-toolkit-and-react-redux
+https://vimeo.com/714606554/b2f2f5b3ff
+
+Ventajas de Redux Toolkit: 
+Configuración más sencilla del store. 
+No requiere tantas dependencias (sólo react-redux, @reduxjs/toolkit. Ya no se requiere redux-thunk). 
+
+Cambios en relación a Redux Vanilla: 
+configureStore reemplaza a createStore
+El archivo reducer se reemplaza por el archivo slice (por ejemplo foodSlice.js). createSlice crea un slice que es un objeto con las propiedades reducer (que se exporta al store) y actions. Para instanciar con createSlice, hay que pasarle un name, un initial state y un objeto reducers. Este objeto reducers contiene lo que se guardar en la propiedad actions. Estas actions se exportan desde el archivo slice al archivo actions. En actions se definen las actions y para traer info de la db se dispatcha directamente la función traida del slice (es decir no se retorna un objeto con type y payload).  

@@ -1,13 +1,22 @@
 /* CSS Variables */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
 :root {
   --myBlack: black;
   --myWhite: white;
+  --text: black;
+  --accentColor: #426b1f;
+  --alertColor: red;
+  --backgroundColor: rgb(202, 196, 196);
+  --fontFamily: "Poppins", sans-serif;
 }
 
+/* BODY */
 body {
-  background-color: var(--myBlack);
-  color: var(--myWhite);
-  /* background-color: green;
-  color: red; */
-  /* color: red; */
+  /* background-color: var(--backgroundColor); */
+  /* background-image: url("./assets/background.jpg"); */
+  background-image: url("./assets/backgroundImage/choppingBoard.jpg");
+  background-size: cover;
+  color: var(--text);
+  font-family: var(--fontFamily);
 }

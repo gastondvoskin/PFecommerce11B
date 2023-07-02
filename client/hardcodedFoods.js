@@ -1,4 +1,4 @@
-const hardcodedFoodObject = {
+export const hardcodedFoodObject = {
     id: 1,
     name: "Calabaza rellena",
     image: "https://ar.images.search.yahoo.com/search/images?p=imagen+de+vianda+de+calabaza&fr=mcafee&type=E211AR714G0&imgurl=https%3A%2F%2Fwww.mundoverde.com.ar%2Fwp-content%2Fuploads%2F2021%2F02%2Fcalabaza-rellena.jpg#id=2&iurl=https%3A%2F%2Fwww.mundoverde.com.ar%2Fwp-content%2Fuploads%2F2021%2F02%2Fcalabaza-rellena.jpg&action=click",
@@ -15,7 +15,7 @@ const hardcodedFoodObject = {
 
 
 
-const hardcodedFoodsArray = [
+export const hardcodedFoodsArray = [
     {
         id: 1,
         name: "Calabaza rellena",

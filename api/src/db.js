@@ -3,7 +3,6 @@ const { Sequelize } = require('sequelize');
 const UserFunction = require("./models/User.js"); 
 const ReviewFunction = require("./models/Review.js");
 const FoodFunction = require("./models/Food.js"); 
-const DietFunction = require("./models/Diet.js");
 const BasketFunction = require("./models/Basket.js");
 const DetailFunction = require("./models/Detail.js");
 
@@ -18,20 +17,17 @@ const sequelize = new Sequelize(
 UserFunction(sequelize);
 ReviewFunction(sequelize);
 FoodFunction(sequelize);
-DietFunction(sequelize);
 BasketFunction(sequelize);
 DetailFunction(sequelize);
 
 // ASSOCIATIONS
-const { User, Review, Food, Diet, Basket, Detail } = sequelize.models; 
+const { User, Review, Food, Basket, Detail } = sequelize.models; 
 User.hasMany(Review);
 Review.belongsTo(User);
 
 Food.hasMany(Review);
 Review.belongsTo(Food);
 
-Food.belongsToMany(Diet, {through: "Food_Diet"});
-Diet.belongsToMany(Food, {through: "Food_Diet"});
 
 User.belongsToMany(Food, {through: "Favorite"});
 Food.belongsToMany(User, {through: "Favorite"});
