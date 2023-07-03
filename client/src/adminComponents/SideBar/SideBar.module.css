@@ -1,0 +1,47 @@
+.sidebar {
+    background-color: #62c728;
+    padding: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .option {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .option:hover {
+    background-color: #e6e6e6;
+  }
+  
+  .activeOption {
+    background-color: #d9d9d9;
+  }
+  
+  /* Opcional: Si deseas que la altura se ajuste automáticamente al contenido */
+  .sidebar ul {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
+  .back-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+  }
+  
+  .link {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .bottom-option:hover {
+    background-color: #e0e0e0;
+  }
+  

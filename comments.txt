@@ -85,13 +85,9 @@ https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5
 https://www.passportjs.org/
 
 
+Auth0
+https://www.youtube.com/watch?v=sTJaHQINpTc&ab_channel=CarlosAzaustre-AprendeJavaScript
 
-Changed background-image. 
-Home.jsx. Deleted unnecessary event.preventDefault. 
-Replaced Foods for food. 
-Created diets.js and categories.js. 
-Added setCurrentPage(1) to filters in Home. 
-Deleted unncessary orderLocalState in Home. 
 
-Home was rendering allFoods, instead of currentFoods. 
-Filters in Home are not modularized. 
+
+USER ID 7ab6ab3c-11bb-4085-8e0d-8fca7ba4f5be

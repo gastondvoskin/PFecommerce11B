@@ -1,10 +1,12 @@
 // store 
 import { configureStore } from '@reduxjs/toolkit';
 import foodsReducer from "./foodSlice";
+import usersReducer from "./userSlice"
 
 const store = configureStore({
   reducer: {
-    foodsReducer
+    foodsReducer,
+    usersReducer
   },
 });
 

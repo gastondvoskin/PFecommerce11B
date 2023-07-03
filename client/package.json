@@ -10,20 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mercadopago/sdk-react": "^0.0.12",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
+    "dotenv": "^16.3.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.13.0",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "spinners-react": "^1.0.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

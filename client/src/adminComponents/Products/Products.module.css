@@ -1,0 +1,14 @@
+.productos {
+  /* Agrega los estilos para el componente Productos */
+  /* Por ejemplo: */
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+  
+  /* Puedes definir más estilos aquí */
+.addFood{
+  margin: 20px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}

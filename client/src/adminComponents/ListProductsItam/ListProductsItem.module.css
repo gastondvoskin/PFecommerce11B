@@ -1,0 +1,18 @@
+.listProductsItem {
+  justify-content: space-between;
+  align-items: center;
+    display: flex;
+    /* Agrega los estilos para el componente ListProductsItem */
+    /* Por ejemplo: */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .left{
+    display: flex;
+  }
+  
+  /* Puedes definir más estilos aquí */
+  
