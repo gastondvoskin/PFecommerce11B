@@ -6,6 +6,7 @@ import style from "../CreateFood/DashBoard.module.css";
 import axios from "axios";
 import { getFoods, putFoods } from "../../redux/foodActions.js";
 import { useNavigate } from 'react-router-dom';
+import styles from "../EditFood/EditFood.module.css"
 
 export default function EditFood() {
   const dispatch = useDispatch();
@@ -13,14 +14,7 @@ export default function EditFood() {
   const { id } = useParams();
   const allFoods = useSelector((state) => state.foodsReducer.allFoods);
 
-  const [editableFields, setEditableFields] = useState({
-    name: false,
-    initial_price: false,
-    discount: false,
-    status: false,
-    description: false,
-    image: false,
-  });
+  const [editableFields, setEditableFields] = useState(false);
 
   const [formData, setFormData] = useState({
     id: "",
@@ -48,11 +42,8 @@ export default function EditFood() {
   }, [allFoods, id]);
 
   const handleCheck = (e) => {
-    const { name, checked } = e.target;
-    setEditableFields({
-      ...editableFields,
-      [name]: checked,
-    });
+    const checked = e.target.checked;
+    setEditableFields(checked);
   };
 
   const handleChange = (e) => {
@@ -116,44 +107,37 @@ export default function EditFood() {
   };
 
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <input
         className={style.diets}
         type="checkbox"
-        name="name"
+        name="editableFields"
         onChange={handleCheck}
-        value="name"
+        checked={editableFields} // Added checked attribute
       />
       <input
         type="text"
         name="name"
         value={formData.name}
-        disabled={!editableFields.name}
+        disabled={!editableFields}
         onChange={handleChange}
         className={style.inputTitle}
       />
-      <input
-        className={style.diets}
-        type="checkbox"
-        name="image"
-        onChange={handleCheck}
-        value="image"
+      
+      <img
+        src={formData.image}
+        alt="img not found"
+        className={style.card}
+        style={{ pointerEvents: editableFields ? "auto" : "none" }} // Added style to disable pointer events
       />
-      <img src={formData.image} alt="img not found" className={style.card} />
       <input
         type="file"
         accept="image/*"
         name="image"
         onChange={handleImageChange}
-        disabled={!editableFields.image}
+        disabled={!editableFields}
       />
-      <input
-        className={style.diets}
-        type="checkbox"
-        name="description"
-        onChange={handleCheck}
-        value="description"
-      />
+
       <label>
         <h3 className={style["h3-title"]}>Descripción: </h3>
       </label>
@@ -161,16 +145,10 @@ export default function EditFood() {
         type="text"
         name="description"
         value={formData.description}
-        disabled={!editableFields.description}
+        disabled={!editableFields}
         onChange={handleChange}
       />
-      <input
-        className={style.diets}
-        type="checkbox"
-        name="initial_price"
-        onChange={handleCheck}
-        value="initial_price"
-      />
+      
       <label>
         <h3 className={style["h3-title"]}>Precio Inicial: </h3>
       </label>
@@ -178,16 +156,10 @@ export default function EditFood() {
         type="number"
         name="initial_price"
         value={formData.initial_price}
-        disabled={!editableFields.initial_price}
+        disabled={!editableFields}
         onChange={handleChange}
       />
-      <input
-        className={style.diets}
-        type="checkbox"
-        name="discount"
-        onChange={handleCheck}
-        value="discount"
-      />
+      
       <label>
         <h3 className={style["h3-title"]}>Descuento: </h3>
       </label>
@@ -195,16 +167,10 @@ export default function EditFood() {
         type="number"
         name="discount"
         value={formData.discount}
-        disabled={!editableFields.discount}
+        disabled={!editableFields}
         onChange={handleChange}
       />
-      <input
-        className={style.diets}
-        type="checkbox"
-        name="status"
-        onChange={handleCheck}
-        value="status"
-      />
+      
       <label>
         <h3 className={style["h3-title"]}>Estado: </h3>
       </label>
@@ -212,15 +178,15 @@ export default function EditFood() {
         type="text"
         name="status"
         value={formData.status}
-        disabled={!editableFields.status}
+        disabled={!editableFields}
         onChange={handleSelect}
       >
         <option value={true}>Habilitado</option>
         <option value={false}>Deshabilitado</option>
       </select>
       <br />
-      <button onClick={handleEdit}>Guardar</button>
-      <button onClick={handleDelete}>Eliminar</button>
+      <button onClick={handleEdit} disabled={!editableFields}>Guardar</button>
+      <button onClick={handleDelete} disabled={!editableFields}>Eliminar</button>
       <Link to="/admin">
         <button>Cancelar</button>
       </Link>
