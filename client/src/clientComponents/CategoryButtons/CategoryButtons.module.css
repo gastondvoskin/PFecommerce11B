@@ -1,25 +1,72 @@
 .pastas {
-    background-image: url("../../assets/categories/pastas.jpg");
-    background-size: cover;
-  }
-  
-  .meat {
-    background-image: url("../../assets/categories/meat.jpg");
-    background-size: cover;
-  }
-  
-  .salads {
-    background-image: url("../../assets/categories/salad.jpeg");
-    background-size: cover;
-  }
-  
-  .buttonsContainer button {
-    height: 200px;
-    width: 200px;
-    margin: 15px;
-  }
-  
-  .buttonsContainer button:hover {
-    box-shadow: 0 0 25px var(--accentColor);
-  }
-  
+  display: flex column;
+  background-image: url("../../assets/categories/pastas.jpg");
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  border: 4px solid green;
+  font-size: 35px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 60%;
+}
+
+.meat {
+  background-image: url("../../assets/categories/meat.jpg");
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  border: 4px solid green;
+  font-size: 35px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 60%;
+}
+
+.salads {
+  background-image: url("../../assets/categories/salad.jpeg");
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  border: 4px solid green;
+  font-size: 35px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 60%;
+}
+
+.container {
+  display: flex;
+  display: flex table-column;
+}
+
+.leftSide {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.buttonsContainer button {
+  height: 200px;
+  width: 200px;
+  margin: 12px;
+}
+
+.parrafo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+  margin-left: 60px;
+  padding: 3%;
+  background-color: rgba(68, 218, 55, 0.5);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  font-size: 20px;
+  border-radius: 30px;
+}
+
+.buttonsContainer button:hover {
+  box-shadow: 0 0 25px var(--accentColor);
+}

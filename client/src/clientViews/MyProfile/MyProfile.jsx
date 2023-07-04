@@ -1,61 +1,130 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetailAction } from "../../redux/userSlice";
-import { useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
+import styles from "./MyProfile.module.css";
 
 const MyProfile = () => {
-  const userDetail = useSelector((state) => state.usersReducer.userDetail);
   const dispatch = useDispatch();
+  const userDetail = useSelector((state) => state.usersReducer.userDetail);
+  const [editableFields, setEditableFields] = useState(false);
   const { user, isAuthenticated } = useAuth0();
 
-  const [ enableEdition, setEnableEdition ] = useState(false);
-  const email = user.email;
+  const [formData, setFormData] = useState({
+    name: "",
+    /* address: "" */
+  });
+
+  /* we get the email from Auth0 */
+  const email = user?.email;
+
+  /* we get the info of the user from the db */
   useEffect(() => {
-    dispatch(getUserDetailAction(email));
+    if (!userDetail) {
+      dispatch(getUserDetailAction(email));
+    }
   }, [email, dispatch]);
-  
-  
- 
+
+  /* we handle wether the form is editable or not */
+  const handleCheck = (event) => {
+    event.preventDefault();
+    setEditableFields(!editableFields);
+  };
+
+  /* we change the value with each change on the form */
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  /* submit does a PUT request */
+  const handleSave = async () => {
+    try {
+      console.log("1");
+      console.log("formData ", formData);
+      const response = await axios.put(`/user/${email}`, formData);
+      console.log("2");
+
+      console.log(response);
+      window.alert("Perfil editado correctamente");
+    } catch (error) {
+      alert({ error: error.message });
+    }
+  };
 
   return (
-    <main>
+    <main className={styles.mainContainer}>
       <h1>Mi perfil</h1>
       <section>
         <h2>Mis datos</h2>
-        <p>WIP</p>
-        <button onClick={() => setEnableEdition(true)}>Editar</button>
-        <form>
-          <div>
+        <button type="button" onClick={handleCheck}>
+          HABILITAR EDICIÓN
+        </button>
+        {/* form */}
+
+        <div className={styles.form}>
+          {/* email */}
+          <div className={styles.rowContainer}>
+            <label htmlFor="name">Email (no puede ser modificado):</label>
+            <input
+              className={styles.input}
+              type="text"
+              name="email"
+              value={user?.email}
+              disabled={true}
+              onChange={handleChange}
+              placeholder={userDetail.name}
+            />
+          </div>
+
+          {/* name */}
+          <div className={styles.rowContainer}>
             <label htmlFor="name">Nombre:</label>
-            <input type="text" placeholder={userDetail.name} />
+            <input
+              className={styles.input}
+              type="text"
+              name="name"
+              value={formData.name}
+              disabled={!editableFields}
+              onChange={handleChange}
+              placeholder={userDetail.name}
+            />
           </div>
 
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input type="text" placeholder={userDetail.name} disabled={true}/>
-          </div>
+          {/* address */}
+          {/* <div className={styles.rowContainer}>
+            <label htmlFor="address">Domicilio:</label>
+            <input
+              className={styles.input}
+              type="text"
+              name="address"
+              value={formData.address}
+              disabled={!editableFields}
+              onChange={handleChange}
+              placeholder={userDetail.address}
+            />
+          </div> */}
 
-          <div>
-            <label htmlFor="surname">Apellido: {userDetail.name}</label>
-          </div>
-          <div>
-            <label htmlFor="adress">Domicilio:</label>
-          </div>
-          {/* it may be implemented in an extra table in the DB */}
-        </form>
+          <button type="button" onClick={handleSave}>
+            Guardar
+          </button>
+        </div>
         <hr></hr>
       </section>
-      <section>
+      {/* <section>
         <h2>Mis favoritos</h2>
         <p>Próximamente...</p>
         <hr></hr>
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <h2>Historial de compras</h2>
         <p>Próximamente...</p>
         <hr></hr>
-      </section>
+      </section> */}
     </main>
   );
 };

@@ -25,9 +25,9 @@ const getUserHandler = async (req, res) => {
 };
 
 const postUserHandler = async (req, res) => {
-    const { name, email, type, status, adress } = req.body;
+    const { name, email, type, status, address } = req.body;
     try {
-        const newUser = await postUserController(name, email, type, status, adress);
+        const newUser = await postUserController(name, email, type, status, address);
         res.status(201).send(newUser);
     } catch (error) {
         res.status(400).send({ error: error.message });
@@ -37,9 +37,14 @@ const postUserHandler = async (req, res) => {
 
 const putUserHandler = async (req, res) => {
     try {
-        const { id } = req.params;
-        const { name, email, type, status, adress } = req.body;
-        await putUserController(id, name, email, type, status, adress);
+        console.log('req.body: ', req.body);
+        
+        const { email } = req.params;
+        console.log('email: ', email);
+
+        const { name, /* email,  */ type, status, address } = req.body;
+        console.log('status: ', status);
+        await putUserController(/* id,  */name, email, type, status, address);
         res.status(200).send('Modificación exitosa');
     } catch (error) {
         res.status(400).send({ error: error.message });

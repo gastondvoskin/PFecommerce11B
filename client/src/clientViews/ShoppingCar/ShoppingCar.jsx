@@ -13,7 +13,7 @@ initMercadoPago('APP_USR-8e95f5fd-f2e0-4982-8ac8-27b1f1b175bb');
 const ShoppingCar = () => {
 
   const allItems=useSelector((state)=>state.foodsReducer.orderItems);
-  console.log(allItems)
+  let total=0;
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [orderData, setOrderData] = useState(allItems);
@@ -52,7 +52,7 @@ const ShoppingCar = () => {
   }
 
   return (
-    <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
+    <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData, total }}>
       <main>
         {renderSpinner()}
         <Checkout onClick={handleClick} description/>

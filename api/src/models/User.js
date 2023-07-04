@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: true,
       },
-      adress: {
+      address: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
       },

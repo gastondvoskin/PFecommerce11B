@@ -10,11 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
+
 function Nav() {
   const [displayProfileOptions, setDisplayProfileOptions] = useState(false);
   const { user, isAuthenticated } = useAuth0();
   console.log("displayProfileOptions: ", displayProfileOptions);
   console.log("isAuthenticated: ", isAuthenticated);
+  console.log('user', user)
 
   return (
     <nav className={styles.mainContainer}>

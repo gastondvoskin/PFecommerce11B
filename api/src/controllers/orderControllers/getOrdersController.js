@@ -1,5 +1,6 @@
-const getOrdersController = () =>{
-    return 'deberia traer todas las ordenes'
+const getOrdersController = () => {
+    const { email } = req.body;
+
 }
 
-module.exports = {getOrdersController}
+module.exports = { getOrdersController }

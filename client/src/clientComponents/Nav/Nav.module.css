@@ -12,7 +12,7 @@
 
 /* LOGO */
 .logo {
-  height: 130px;
+  height: 100px;
   margin-left: 40px;
 }
 
@@ -29,7 +29,7 @@
 .normalLink, .user {
   text-decoration: none;
   margin: 60px;
-  font-size: 22px;
+  font-size: 18px;
   color: black;
 }
 
@@ -39,7 +39,7 @@
 
 .activeLink {
   text-decoration: none;
-  font-size: 22px;
+  font-size: 18px;
   margin: 60px;
   border-top: 4px solid var(--accentColor);
   color: var(--accentColor);

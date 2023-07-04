@@ -3,28 +3,75 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  background: no-repeat;
 }
 
 .container {
-  width: 65%;
+  width: 80%;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction:row,;
   align-items: center;
   border: 5px solid var(--accentColor);
   background: white;
   text-align: center;
   border-radius: 24px;
-  box-shadow: 0 0 10px var(--accentColor);
+  box-shadow: 0 0 2px var(--accentColor);
+}
+
+.container1 {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  border-right: 1px solid rgb(192, 191, 191);
+}
+
+.lineahori {
+  width: 100%;
+  margin: 0px 0px 15px 0px;
+}
+
+.butagregar {
+  background-color: var(--accentColor);
+  font-size: 15px;
+  margin-right: 5px;
+  border-radius: 10%;
+  color: white;
+  width: 120px;
+  height: 40px;
+  border: solid 3px white;
+}
+
+.butagregar:hover{
+  background-color: var(--accentColor2);
+  transition: 0.5s;
+}
+
+.container2 {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 .title {
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px 5px 5px 20px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.caract {
+  font-size: 20px;
   text-align: center;
   font-weight: bold;
   padding: 10px 5px 5px 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .image {
@@ -33,13 +80,14 @@
   background: var(--accentColor) 50% / cover no-repeat;
   border-radius: 24px;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .description {
   margin-bottom: 10px;
+  margin: 0px 20px 20px 10px;
   font-size: 20px;
   padding: 10px 0px 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .price,
@@ -55,6 +103,16 @@
   .container {
     flex-direction: column;
     align-items: center;
+  }
+
+  .container1 {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    border-right: 0px solid rgb(192, 191, 191);
   }
 
   .image {

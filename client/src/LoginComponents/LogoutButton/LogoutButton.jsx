@@ -5,7 +5,9 @@ const LogoutButton = () => {
 
   return (
     <button 
-      onClick={() => logout( {returnTo: window.location.origin} )}>Cerrar sesión  {/* returnTo is new */}
+      /* onClick={() => logout( {returnTo: window.location.origin} )} */
+      onClick={() => logout( {returnTo: "https://viandaexpress.vercel.app/"} )}
+    >Cerrar sesión 
     </button>
   );
 };

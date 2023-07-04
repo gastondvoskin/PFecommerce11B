@@ -6,6 +6,7 @@ import style from "../CreateFood/DashBoard.module.css";
 import axios from "axios";
 import { getFoods, putFoods } from "../../redux/foodActions.js";
 import { useNavigate } from 'react-router-dom';
+import styles from "./EditFood.module.css";
 
 export default function EditFood() {
   const dispatch = useDispatch();
@@ -106,24 +107,31 @@ export default function EditFood() {
   };
 
   return (
-    <div>
-      <label>Habilitar edición</label>
-      <input
-        className={style.diets}
-        type="checkbox"
-        name="name"
-        onChange={handleCheck}
-        value="name"
-      />
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        disabled={!editableFields}
-        onChange={handleChange}
-        className={style.inputTitle}
-      />
-      <img src={formData.image} alt="img not found" className={style.card} />
+    <main className={styles.main}>
+    <div className={styles.container}>
+      <div className={styles.cabecera}>
+        <h4>Editar Vianda</h4>
+        <div className={styles.containergen}>
+      <div className={styles.container1}>
+        <div className={styles.hab}>
+        <label className={styles.hablab}>Habilitar edición</label>
+        <input
+          type="checkbox"
+          name="name"
+          onChange={handleCheck}
+          value="name"
+        />
+        </div>
+        <h3 className={style["h3-title"]}>Nombre: </h3>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          disabled={!editableFields}
+          onChange={handleChange}
+          
+        />
+        <img src={formData.image} alt="img not found" className={styles.image} />
       <input
         type="file"
         accept="image/*"
@@ -131,6 +139,9 @@ export default function EditFood() {
         onChange={handleImageChange}
         disabled={!editableFields}
       />
+      </div>
+      <div className={styles.container2}>
+        <div className={styles.cont}>
       <label>
         <h3 className={style["h3-title"]}>Descripción: </h3>
       </label>
@@ -174,12 +185,18 @@ export default function EditFood() {
         <option value={true}>Habilitado</option>
         <option value={false}>Deshabilitado</option>
       </select>
-      <br />
-      <button onClick={handleEdit}>Guardar</button>
-      <button onClick={handleDelete}>Eliminar</button>
+      </div>
+      </div>
+      </div>
+      <div className={styles.divbtn}>
+      <button className={styles.butedit} onClick={handleEdit}>Guardar</button>
+      <button className={styles.butedit} onClick={handleDelete}>Eliminar</button>
       <Link to="/admin">
-        <button>Cancelar</button>
+        <button className={styles.butedit}>Cancelar</button>
       </Link>
+      </div>
+      </div>
     </div>
+    </main>
   );
 }

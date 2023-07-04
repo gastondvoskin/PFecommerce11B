@@ -45,7 +45,7 @@ const CategoryButtons = () => {
             onClick={(e) => handleClick(e)}
             value="Pastas"
         >
-            {/* Pastas */}
+            Pastas
         </button>
 
         <button
@@ -53,7 +53,7 @@ const CategoryButtons = () => {
             onClick={(e) => handleClick(e)}
             value="Carnes"
         >
-            {/* Carnes */}
+            Carnes
         </button>
 
         <button
@@ -61,7 +61,7 @@ const CategoryButtons = () => {
             onClick={(e) => handleClick(e)}
             value="Ensaladas"
         >
-            {/* Ensaladas */}
+            Ensaladas
         </button>
   </div>
   )

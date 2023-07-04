@@ -4,7 +4,7 @@ import { Wallet } from "@mercadopago/sdk-react";
 import { Context } from "./ContextProvider";
 
 const Payment = () => {
-  const { preferenceId, orderData } = React.useContext(Context);
+  const { preferenceId, orderData,total } = React.useContext(Context);
   const [isReady, setIsReady] = React.useState(false);
   const paymentClass = classnames('payment-form dark', {
     'payment-form--hidden': !isReady,
@@ -43,12 +43,12 @@ const Payment = () => {
                 <div>
                   <span className="price" id="summary-price">${item.final_price}</span>
                   <p className="item-name">
-                    Book X <span id="summary-quantity">${item.quantity}</span>
+                    ${item.name} <span id="summary-quantity">${item.quantity}</span>
                   </p>
                 </div>
               </div>
               <div className="total">
-                Total
+                Subtotal
                 <span className="price" id="summary-total">${item.amount}</span>
               </div>
             </div>
@@ -56,7 +56,10 @@ const Payment = () => {
         })}
               
             
-            
+          <div className="total">
+            Total
+            <span className="price" id="summary-total">${total}</span>
+          </div> 
           <div className="payment-details">
             <div className="form-group col-sm-12">
               {renderCheckoutButton(preferenceId)}

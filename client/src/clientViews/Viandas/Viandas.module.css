@@ -1,0 +1,39 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.filtros {
+  width: 100%;
+  max-width: 450px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtros2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.asereje {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-color: black;
+}
+
+.notFoundMessage {
+  color: var(--alertColor);
+  margin-top: 20px;
+  font-weight: bold;
+}
