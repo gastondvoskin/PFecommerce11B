@@ -27,7 +27,17 @@ export default function Card({ id, name, image, final_price, allItems }) {
       );
     } else {
       if (isItem) {
-        setIsItem(false), dispatch(deleteItemActions(id));
+        setIsItem(false);
+        dispatch(deleteItemActions(id));
+        //-------------------------
+        const bodyDeleteItem = {
+          userEmail: user?.email,
+          FoodId: id,
+        };
+        axios
+          .delete("/item", { data: bodyDeleteItem })
+          .catch((error) => console.log(error));
+        //-------------------------
       } else {
         setIsItem(true);
         const amount = final_price * parseInt(quantity);
