@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import styles from "./CarouselContainer.module.css";
 import { useState } from "react";
 
+
 export default function CarouselContainer() {
   const [index, setIndex] = useState(0);
   const handleSelect = (selectedIndex, e) => {
@@ -30,7 +31,7 @@ export default function CarouselContainer() {
 
   return (
     <div className={styles.mainContainer}>
-      <Carousel activeIndex={index} onSelect={handleSelect} interval="6000">
+      <Carousel activeIndex={index} onSelect={handleSelect} interval="10000">
         {slides.map((slide, index) => {
           return (
             <Carousel.Item key={index}>

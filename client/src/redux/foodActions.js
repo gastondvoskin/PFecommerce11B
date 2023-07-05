@@ -14,7 +14,8 @@ import {
   setDiet,
   filterByDiet,
   addItems,
-  deleteItems /* , getFoodById */,
+  deleteItems, /* , getFoodById */
+  getAdminFoods,
 } from "./foodSlice.js";
 import { Alert } from "bootstrap";
 
@@ -23,6 +24,16 @@ export const getFoods = () => async (dispatch) => {
     const response = await axios.get("/food");
     const allFoods = response.data;
     dispatch(getAllFoods(allFoods));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAdminFoodsAction = () => async (dispatch) => {
+  try {
+    const response = await axios.get("/food/admin")
+      .then(r => r.data)
+    dispatch(getAdminFoods(response));
   } catch (error) {
     console.log(error);
   }

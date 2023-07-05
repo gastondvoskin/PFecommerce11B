@@ -7,6 +7,7 @@ import axios from "axios";
 import { getFoods, putFoods } from "../../redux/foodActions.js";
 import { useNavigate } from 'react-router-dom';
 import styles from "./EditFood.module.css";
+import Swal from "sweetalert2";
 
 export default function EditFood() {
   const dispatch = useDispatch();
@@ -64,6 +65,56 @@ export default function EditFood() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
+    //var verificar= window.confirm(`Está a punto de modificar la vianda`)
+    Swal.fire({
+      title: 'Estas Seguro?',
+      text: "¡Puedes modificar en cualquier momento!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, ¡Modificar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        const form = new FormData();
+        for (let key in formData) {
+          form.append(key, formData[key]);
+        }
+        try {
+            axios.put(`/food/${id}`, formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            });
+            //alert(`Receta de ${formData.name} modificada`); 
+            Swal.fire(
+              'Modificado!',
+              `Receta de ${formData.name} modificado.`,
+              'success'
+            )
+            navigate('/admin');
+        } catch (error) {
+            //alert(error.message)
+            Swal.fire(
+              'Error del sistema',
+              `${error.message}`,
+              'warning',
+              )
+        }
+      }else if(result.dismiss === Swal.DismissReason.cancel){
+        Swal.fire(
+        'Cancelado',
+        'Los cambios no se guardaron',
+        'success'
+        )
+      }
+    })
+    
+  };
+
+  /*const handleEdit = async (e) => {
+    e.preventDefault();
     var verificar= window.confirm(`Está a punto de modificar la vianda`)
     if(verificar){
       const form = new FormData();
@@ -71,7 +122,7 @@ export default function EditFood() {
         form.append(key, formData[key]);
       }
       try {
-          await axios.put(`http://localhost:3001/food/${id}`, formData, {
+          await axios.put(`/food/${id}`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -82,8 +133,50 @@ export default function EditFood() {
           alert(error.message)
       }
     }
+  };*/
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    //var verificar= window.confirm(`Está a punto de eliminar la vianda`)
+    Swal.fire({
+      title: 'Estas Seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, ¡Eliminar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        try {
+          axios.delete(`/food/${id}`);
+            //alert(`Receta de ${formData.name} modificada`); 
+            Swal.fire(
+              'Eliminado!',
+              `Vianda ${formData.name} Eliminado.`,
+              'success'
+            )
+            navigate('/admin');
+        } catch (error) {
+            //alert(error.message)
+            Swal.fire(
+              'Error del sistema',
+              `${error.message}`,
+              'warning',
+              )
+        }
+      }else if(result.dismiss === Swal.DismissReason.cancel){
+        Swal.fire(
+        'Cancelado',
+        'Los cambios no se guardaron',
+        'success'
+        )
+      }
+    })
   };
 
+  /*
   const handleDelete = async (e) => {
     e.preventDefault();
     var verificar= window.confirm(`Está a punto de eliminar la vianda`)
@@ -97,6 +190,7 @@ export default function EditFood() {
       }
     }
   };
+  */
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];

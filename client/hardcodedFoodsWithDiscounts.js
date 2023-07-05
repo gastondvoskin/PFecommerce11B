@@ -1,43 +1,44 @@
-export const foodsWithDiscounts = [
+export const hardcodedFoodsWithDiscounts = [
   {
-    name: "Pasta rellena",
-    diets: ["Vegetariano"],
+    name: "Raviolones caseros",
+    diets: ["Sin TACC"],
     image:
-      "https://img-global.cpcdn.com/recipes/7041b21955686cf2/1360x964cq70/pasta-rellenas-sin-tacc-sin-gluten-vegan-foto-principal.webp",
+      "https://www.cuerpomente.com/medio/2023/06/01/noquis-de-patata-y-trigo-sarraceno-con-salsa-pesto-de-rucula-y-nueces_00000000_230601103837_1063x717.jpg",
     description:
       "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
     category: "Pastas",
-    initial_price: 2600,
+    initial_price: 3100,
     discount: 0,
-    final_price: 2600,
+    final_price: 3100,
     status: true,
     total_score: 0,
   },
   {
-    name: "Ensalada mixta",
-    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    name: "Costillas de cerdo BBQ",
+    diets: ["Sin TACC"],
     description:
-      "Una ensalada mixta clásica con lechuga, tomate, zanahoria, pepino y aderezo de vinagreta casera.",
-    image: "https://imag.bonviveur.com/imagen-de-la-ensalada-mixta.jpg",
-    initial_price: 1370,
-    discount: 0,
-    final_price: 1370,
-    status: true,
-    total_score: 0,
-    category: "Ensaladas",
-  },
-  {
-    name: "Carne guisada con patatas",
-    diets: ["Sin TACC", "Sin Lactosa"],
-    description:
-      "Carne tierna y jugosa guisada a fuego lento con patatas, cebolla, zanahorias y especias, un plato reconfortante.",
+      "Deliciosas costillas de cerdo asadas a la parrilla con una irresistible salsa barbacoa casera.",
     image:
-      "https://www.cocinatis.com/archivos/202207/CTIS0210-Receta-carne-guisada-con-patatas_large_16x9.jpg",
-    initial_price: 3000,
+      "http://locosxlaparrilla.com/wp-content/uploads/2015/02/costillas-cerdo-marinada-macerar-parrilla-barbacoa-locosxlaparrilla.jpg",
+    initial_price: 2650,
     discount: 0,
-    final_price: 3000,
+    final_price: 2650,
     status: true,
     total_score: 0,
     category: "Carnes",
+  },
+  {
+    name: "Ensalada de aguacate",
+    diets: ["Sin TACC", "Vegetariano", "Vegano", "Sin Lactosa"],
+    description:
+      "Una ensalada de aguacate con tomate cherry, cilantro, cebolla roja y aliño de limón y aceite de oliva.",
+    image:
+      "https://cdn.colombia.com/gastronomia/2011/07/26/ensalada-de-aguacate-y-tomate-1496.jpg",
+    initial_price: 2360,
+    discount: 0,
+    final_price: 2360,
+    status: true,
+    total_score: 0,
+    category: "Ensaladas",
   },
 ];

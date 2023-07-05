@@ -3,7 +3,7 @@ const { Food } = require("../../db");
 
 const getFoodByNameController = async (name) => {
   const foodByname = await Food.findAll({
-    where: { name: { [Op.iLike]: `%${name}%` } },
+    where: { status: true, name: { [Op.iLike]: `%${name}%` } },
   });
 
   return foodByname;

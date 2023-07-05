@@ -10,6 +10,10 @@
   flex-direction: column;
 }
 
+.movlef{
+  margin-left: 11px;
+}
+
 .card:hover {
   box-shadow: 0 0 25px var(--accentColor);
 }

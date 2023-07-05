@@ -34,6 +34,7 @@ export default function Detail() {
     allItems.map((item)=>{
       if(item.name===foodDetail.name){
         setIsItem(true)
+        setQuantity(item.quantity)
       }
     });
   },[])

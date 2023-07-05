@@ -9,6 +9,7 @@ import { hardcodedFoodsArray } from "../../hardcodedFoods";
 
 const initialState = {
   allFoods: [],
+  adminFoods:[],
   foodDetail: [],
   filteredFoods:[],
   orderItems:[],
@@ -35,6 +36,10 @@ export const foodsSlice = createSlice({
   name: "foods",
   initialState,
   reducers: {
+    getAdminFoods:(state,action) =>{
+      const foods = action.payload
+      state.adminFoods = foods
+    },
     getAllFoods: (state, action) => {
       /* we can access getAllFoods through foodsSlice.actions.getAllFoods */
       // console.log(action.type);
@@ -112,6 +117,7 @@ export const foodsSlice = createSlice({
 });
 
 export const {
+  getAdminFoods,
   getAllFoods,
   getFoodsByName,
   activeFilteredFood,

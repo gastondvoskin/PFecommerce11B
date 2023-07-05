@@ -78,7 +78,7 @@ const foods = [
       "Este plato, está cocinado con una base de Pastas y pertenece a los platos de la cocina Tradicional. Por regla general se consume, principalmente, durante Todo el año, y se suele servir a los comensales como Primer plato.",
     category: "Pastas",
     initial_price: 3100,
-    discount: 0,
+    discount: 20,
     final_price: 3100,
     status: true,
     total_score: 0,
@@ -427,7 +427,7 @@ const foods = [
     image:
       "http://locosxlaparrilla.com/wp-content/uploads/2015/02/costillas-cerdo-marinada-macerar-parrilla-barbacoa-locosxlaparrilla.jpg",
     initial_price: 2650,
-    discount: 0,
+    discount: 10,
     final_price: 2650,
     status: true,
     total_score: 0,
@@ -510,10 +510,10 @@ const foods = [
       "Pechuga de pollo jugosa rellena de jamón y queso, horneada hasta obtener un dorado perfecto y acompañada de una salsa suave.",
     image: "https://www.annarecetasfaciles.com/files/cordon-bleub.jpg",
     initial_price: 2450,
-    discount: 0,
+    discount: 20,
     final_price: 2450,
     status: true,
-    total_score: 0,
+    total_score: 4.5,
     category: "Carnes",
   },
   {
@@ -596,7 +596,7 @@ const foods = [
     discount: 0,
     final_price: 3000,
     status: true,
-    total_score: 0,
+    total_score: 4.5,
     category: "Carnes",
   },
   {
@@ -652,7 +652,7 @@ const foods = [
     discount: 0,
     final_price: 2680,
     status: true,
-    total_score: 0,
+    total_score: 4.8,
     category: "Carnes",
   },
   {
@@ -747,7 +747,7 @@ const foods = [
     image:
       "https://cdn.colombia.com/gastronomia/2011/07/26/ensalada-de-aguacate-y-tomate-1496.jpg",
     initial_price: 2360,
-    discount: 0,
+    discount: 10,
     final_price: 2360,
     status: true,
     total_score: 0,
@@ -875,7 +875,7 @@ const foods = [
     discount: 0,
     final_price: 2300,
     status: true,
-    total_score: 0,
+    total_score: 4.2,
     category: "Ensaladas",
   },
   {

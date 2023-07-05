@@ -3,6 +3,7 @@ const { getAllFoodController } = require('../controllers/foodControllers/getAllF
 const { postFoodController } = require('../controllers/foodControllers/postFoodController');
 const { deleteFoodController } = require('../controllers/foodControllers/deleteFoodController');
 const { putFoodController } = require('../controllers/foodControllers/putFoodController');
+const { getAdminFoodController } = require('../controllers/foodControllers/getAdminFoodsController');
 
 
 const getFoodHandler = async (req, res) => {
@@ -15,6 +16,15 @@ const getFoodHandler = async (req, res) => {
             const allFood = await getAllFoodController();
             res.status(200).send(allFood);
         }
+    } catch (error) {
+        res.status(400).send({ error: error.message });
+    }
+};
+
+const getAdminFoodHandler = async (req, res) => {
+    try {
+        const allFood = await getAdminFoodController();
+        res.status(200).send(allFood);
     } catch (error) {
         res.status(400).send({ error: error.message });
     }
@@ -46,7 +56,7 @@ const putFoodHandler = async (req, res) => {
     try {
         const { id } = req.params;
         const { name, diet, description, initial_price, discount, status, category } = req.body;
-        const final_price = initial_price * (1 - (discount / 100));
+        const final_price = initial_price ? initial_price * (1 - (discount / 100)) : undefined;
         const image = req.file ? req.file.buffer : null;
         console.log(image);
         console.log(req.body);
@@ -69,4 +79,4 @@ const deleteFoodHandler = async (req, res) => {
 
 
 
-module.exports = { getFoodHandler, postFoodHandler, putFoodHandler, deleteFoodHandler };
+module.exports = { getFoodHandler, postFoodHandler, putFoodHandler, deleteFoodHandler,getAdminFoodHandler };

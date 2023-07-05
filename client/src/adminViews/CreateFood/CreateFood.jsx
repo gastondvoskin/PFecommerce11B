@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import validation from "./validation.jsx";
 import styles from "./DashBoard.module.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function CreateFood() {
   const dispatch = useDispatch();
@@ -64,7 +65,12 @@ export default function CreateFood() {
       input.discount < 0 ||
       input.discount > 100
     ) {
-      alert(`Llena todos los campos para crear la vianda`);
+      //alert(`Llena todos los campos para crear la vianda`);
+      Swal.fire(
+        'Imposible de crear Viandas!',
+        'Por favor llenar todos los campos',
+        'warning'
+      )
     } else {
       try {
         const formData = new FormData();
@@ -82,7 +88,12 @@ export default function CreateFood() {
             "Content-Type": "multipart/form-data",
           },
         });
-        alert(`Receta de ${input.name} creada`);
+        //alert(`Receta de ${input.name} creada`);
+        Swal.fire(
+          'la Receta!',
+          `${input.name}`,
+          'success'
+        )
         setInput({
           name: "",
           description: "",

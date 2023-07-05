@@ -1,24 +1,29 @@
 .sidebar {
-    background-color: #62c728;
+    background-color: var(--accentColor);
     padding: 20px;
   }
   
   ul {
     list-style-type: none;
     padding: 0;
+    color: white;
   }
   
   .option {
     padding: 10px;
     cursor: pointer;
   }
+  .sep{
+    margin: 0px 4px 0px 0px;
+    color: white;
+  }
   
   .option:hover {
-    background-color: #e6e6e6;
+    background-color: var(--accentColor2);
   }
   
   .activeOption {
-    background-color: #d9d9d9;
+    background-color: var(--accentColor2);
   }
   
   /* Opcional: Si deseas que la altura se ajuste automáticamente al contenido */
