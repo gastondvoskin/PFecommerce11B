@@ -44,6 +44,15 @@ export default function Card({ id, name, image, final_price, allItems }) {
         dispatch(
           addItemsActions({ id, name, image, final_price, quantity, amount })
         );
+        //-------------------------
+        const bodyAddItem = {
+          userEmail: user?.email,
+          FoodId: id,
+          quantity,
+          final_price,
+        };
+        axios.post("/item", bodyAddItem).catch((error) => console.log(error));
+        //-------------------------
       }
     }
   };
