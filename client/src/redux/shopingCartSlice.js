@@ -11,12 +11,12 @@ export const shopingCartSlice = createSlice({
         getPendingOrderCase:(state,action)=>{
             state.pendingOrder = action.payload
         },
-        getIteminOrderCase:()=>{
-            
+        setUserOrderCase:(state,action)=>{
+            state.pendingOrder = action.payload
         }
     }
 })
-export const {getPendingOrderCase} = shopingCartSlice.actions
+export const {getPendingOrderCase,setUserOrderCase} = shopingCartSlice.actions
 export default shopingCartSlice.reducer;
 
 export const getPendingOrderAction = (userId) => async (dispatch) => {
