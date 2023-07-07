@@ -9,6 +9,7 @@ import Card from "../../clientComponents/Card/Card";
 import { hardcodedFoodsWithDiscounts } from "../../../hardcodedFoodsWithDiscounts";
 import CarouselContainer from "../../clientComponents/CarouselContainer/CarouselContainer.jsx";
 import { Link } from "react-router-dom";
+import { setUserOrderCase } from "../../redux/shopingCartSlice";
 
 
 const Home = () => {
@@ -38,8 +39,11 @@ const Home = () => {
       };
       axios
         .post("/user", body)
-        .then(() => {
-          return axios.post("/order", body);
+        .then(async () => {
+          const userOrder = await axios.post("/order", body)
+            .then((r)=> r.data)
+          console.log('userOrder:',userOrder)
+          dispatch(setUserOrderCase(userOrder))
         })
         .then(() => {
           console.log("Usuario y Order enviados a DB");

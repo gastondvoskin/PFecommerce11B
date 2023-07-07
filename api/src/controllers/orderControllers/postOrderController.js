@@ -1,5 +1,8 @@
 const { User } = require("../../db");
 const { Order } = require("../../db");
+const{ Item } = require("../../db");
+const {Food} = require("../../db");
+
 
 const postOrderController = async (email) => {
   try {
@@ -13,8 +16,12 @@ const postOrderController = async (email) => {
       where: {
         UserId: userId,
         status: "PENDIENTE",
+      },include: {
+        model: Item,
+        include: Food,
       },
     });
+    console.log(userOrder)
 
     if (!userOrder) {
       userOrder = await Order.create({
