@@ -33,7 +33,7 @@ const putItemController = async (userEmail, FoodId, quantity, final_price) => {
   );
 
   await updateCartTotalPrice(userOrder.dataValues.id);
-  return "Actualizado correctamente";
+  return "Item actualizado correctamente";
 };
 
 module.exports = { putItemController };

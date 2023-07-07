@@ -11,6 +11,7 @@ import AdminPanel from "./adminViews/AdminPanel/AdminPanel";
 import CreateFood from "./adminViews/CreateFood/CreateFood";
 import ShoppingCar from "./clientViews/ShoppingCar/ShoppingCar";
 import Viandas from "./clientViews/Viandas/Viandas";
+import PaymentStatus from "./clientViews/PaymentStatus/PaymentStatus";
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
         <Route path="/admin/create" element={<CreateFood />} />
         <Route path="/admin/edit/:id" element={<EditForm />} />
         <Route path="/shoppingcart" element={<ShoppingCar />} />
+        <Route path="/payment" element={<PaymentStatus />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {!location.pathname.includes("/admin") && <Footer />}

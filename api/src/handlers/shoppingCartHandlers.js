@@ -48,9 +48,9 @@ const createPreferenceHandler = async (req, res) => {
     items: itemsBody,
 
     back_urls: {
-      success: "http://localhost:3001/shopping-cart/feedback",
-      failure: "http://localhost:3001/shopping-cart/feedback",
-      pending: "http://localhost:3001/shopping-cart/feedback",
+      success: "http://localhost:5173/payment",
+      failure: "http://localhost:5173/payment",
+      pending: "http://localhost:5173/payment",
     },
     auto_return: "approved",
   };
