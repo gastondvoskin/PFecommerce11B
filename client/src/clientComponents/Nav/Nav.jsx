@@ -85,7 +85,7 @@ function Nav() {
             <LogoutButton />
             <NavLink className={styles.option} to="/myprofile">MI CUENTA</NavLink>
           </div> }
-          {displayProfileOptions && !isAuthenticated && <div><LoginButton /></div>}
+          {displayProfileOptions && !isAuthenticated && <div className={styles.options}><LoginButton /></div>}
         </div>
         
         </li>
