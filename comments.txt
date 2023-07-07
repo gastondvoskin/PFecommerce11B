@@ -8,6 +8,19 @@ https://viandaexpress-git-deployingpreviewbranch-gastondvoskin.vercel.app
 D. Back-end deploy (deployingPreviewBranch environment - updated automatically when pushing to deployingPreviewBranch):
 viandaexpress-railway-previewbranchexperiment.up.railway.app
 
+1b. General flow.
+client/main.jsx axios.defaults.baseURL to define the baseURL of the api (localhost or Railway deploy). In Vercel, project setting, environment variables the baseurl is defined for production (taken from Railway deploy). 
+
+
+Back-end deploy main: https://viandaexpress-api-main.up.railway.app
+Front-end deploy main: https://viandaexpress.vercel.app
+
+Back-end deploy develop: https://viandaexpress-api-develop.up.railway.app
+Front-end deploy develop: https://viandaexpress-git-develop-gastondvoskin.vercel.app/
+
+
+
+
 
 2. Organization. 
 A. Discord: 
