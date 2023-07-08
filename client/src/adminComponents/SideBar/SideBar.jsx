@@ -52,7 +52,7 @@ const SideBar = ({ onSelectOption,selectedOption }) => {
             </li>
         
         <div className={`${style.option}`}>
-            <Link className={style.link} to="/home">
+            <Link className={style.link} to="/">
             <FontAwesomeIcon icon={faUsers} className={style.sep}/>Client</Link>
         </div>
         </ul>

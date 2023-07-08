@@ -6,7 +6,7 @@ import { getFoods } from "../../redux/foodActions.js";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import Card from "../../clientComponents/Card/Card";
-// import { hardcodedFoodsWithDiscounts } from "../../../hardcodedFoodsWithDiscounts";
+import { hardcodedFoodsWithDiscounts } from "../../../hardcodedFoodsWithDiscounts";
 import CarouselContainer from "../../clientComponents/CarouselContainer/CarouselContainer.jsx";
 import { Link } from "react-router-dom";
 
@@ -18,10 +18,16 @@ const Home = () => {
   const foodsWithDiscounts = allFoods.filter(
     (food) => food.discount > 0
   ); /* .slice(0, 4) */ /* uncomment slice(0,4) to render only the first 4 */
+
   const foodsWithScoreHigherThan4 = allFoods.filter(
     (food) => food.total_score > 4
   );
 
+  // const foodsScoresToDebug = allFoods.map(food => food.total_score);
+  // console.log('foodsScoresToDebug: ', foodsScoresToDebug);
+
+  // console.log('allFoods: ', allFoods)
+  // console.log('foodsWithDiscounts: ', foodsWithDiscounts);
   const { isLoading, user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
@@ -57,7 +63,6 @@ const Home = () => {
       <CarouselContainer />
 
       <section>
-
         <Link to="viandas">
           <button className={styles.viewAllButton}>VER TODAS LAS VIANDAS</button>
         </Link>
@@ -90,8 +95,8 @@ const Home = () => {
       <section className={styles.sectionContainer}>
         <h1>Mejor rankeados</h1>
         <div className={styles.cardsContainer}>
-          {foodsWithScoreHigherThan4 &&
-            foodsWithScoreHigherThan4.map(
+          {foodsWithScoreHigherThan4 && foodsWithScoreHigherThan4.map(
+          /* {hardcodedFoodsWithDiscounts && hardcodedFoodsWithDiscounts.map( */
               ({ id, name, image, final_price, category, diets }) => {
                 return (
                   <Card

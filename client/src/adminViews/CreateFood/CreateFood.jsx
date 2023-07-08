@@ -54,7 +54,6 @@ export default function CreateFood() {
     // const handleSubmit= async (e)=>{
     e.preventDefault();
     setErrors(validation(input));
-    console.log(input);
     if (
       !input.name ||
       !input.description ||

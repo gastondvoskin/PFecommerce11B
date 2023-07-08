@@ -11,8 +11,12 @@ import axios from "axios";
 const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 
-//axios.defaults.baseURL = "https://pfecommerce11b-production-177a.up.railway.app";
-axios.defaults.baseURL = "http://localhost:3001";
+
+// NIY - TONO comment: a better approach would be to save the URL in .env to adapt according to the environment (production vs deployingPreviewBranch).
+
+axios.defaults.baseURL = "https://pfecommerce11b-production-177a.up.railway.app"; /* production */
+// axios.defaults.baseURL = "https://viandaexpress-railway-previewbranchexperiment.up.railway.app"; /* deployingPreviewBranch environment */
+// axios.defaults.baseURL = "http://localhost:3001";  /* local */
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
@@ -20,8 +24,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: window.location.origin,
-        /* redirect_uri: "http://localhost:5173/home" */
+        // redirect_uri: window.location.origin,
+        redirect_uri: "http://localhost:5173/home" 
       }}
     >
       <BrowserRouter>

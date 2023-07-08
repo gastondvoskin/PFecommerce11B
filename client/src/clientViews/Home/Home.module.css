@@ -14,7 +14,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  flex-wrap: flex;
+  flex-wrap: wrap;
   width: 100%;
 }
 

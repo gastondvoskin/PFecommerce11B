@@ -8,6 +8,7 @@
   padding: 10px 0px ;
   display: flex;
   flex-direction: column;
+  margin: 10px 20px 15px 0;
 }
 
 .movlef{
@@ -40,6 +41,7 @@
   font-weight: bold;
   color: #426b1f;
   margin-left: 15px;
+  margin-bottom: 17px;
 }
 
 .shopping{
@@ -50,7 +52,8 @@
 
 .btncar{
   background-color: var(--accentColor);
-  border-radius: 0px 0px 15px 15px;
+  border-radius: 0px 0px 22px 22px;
+  padding-left: 0px;
   width: 269px;
   border: none;
   color: white;
@@ -62,17 +65,17 @@
   transition: 0.5s;
 }
 
-.divbtndet{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-}
-
 .detailinput{
   width: 60px;
-  height: 26px;
-  border-radius: 0px 0px 15px 0px;
-  border-left: none;
+  height: 22px;
+  border-radius: 0px 0px 10px 0px;
+  border: none;
   text-align: center;
 }
+
+.inputagregar{
+  display: flex;
+  flex-direction: row;
+}
+
+

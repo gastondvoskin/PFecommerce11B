@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import classnames from "classnames";
 import { Context } from "./ContextProvider";
-import { deleteItemActions } from "../../redux/foodActions";
+import { deleteItemActions,addItemsActions } from "../../redux/foodActions";
 import { useDispatch, useSelector } from "react-redux";;
 
 const Checkout = ({ onClick }) => {
   const [isVisible, setIsVisible] = React.useState(true);
+  const dispatch=useDispatch();
   let {
     preferenceId,
     isLoading: disabled,
@@ -18,25 +19,37 @@ const Checkout = ({ onClick }) => {
   });
 
   const updatePrice = (event) => {
-    const quantity = event.target.value;
-    const variation = quantity - orderData.quantity;
+    const quantity = parseInt(event.target.value);
+    console.log(quantity)
     const name = event.target.name;
     const item = orderData.filter((it) => it.name === name)[0];
-    const amount = parseInt(item.final_price) * parseInt(quantity);
+    const variation = quantity - item.quantity;
+    const amount = item.final_price * quantity;
     console.log(amount);
     const actual = [];
     orderData.map((it) => {
-      if (it.name === name) {
+      if (it.name === name && quantity!==0) {
         actual.push({
           id: it.id,
           name: it.name,
           image: it.image,
           final_price: it.final_price,
-          quantity: parseInt(quantity),
+          quantity: quantity,
           amount: amount,
         });
-      } else {
+        dispatch(deleteItemActions(item.id))
+        dispatch(addItemsActions({
+          id: it.id,
+          name: it.name,
+          image: it.image,
+          final_price: it.final_price,
+          quantity: quantity,
+          amount: amount,
+        }))
+      } else if(it.name!==name) {
         actual.push(it);
+      }else{
+        dispatch(deleteItemActions(item.id))
       }
     });
     setOrderData(actual);
@@ -51,6 +64,14 @@ const Checkout = ({ onClick }) => {
   orderData.forEach((item) => {
     total = total + item.amount;
   });
+
+  const handleDelete=(e)=>{
+    const name=e.target.name;
+    const item=orderData.filter(it=>it.name===name)[0]
+    console.log(item.id)
+    setOrderData(orderData.filter(it=>it.id!==item.id))
+    dispatch(deleteItemActions(item.id))
+  }
 
   return (
     <section className={shoppingCartClass}>
@@ -98,8 +119,8 @@ const Checkout = ({ onClick }) => {
             </div>
           </div>
 
-          {orderData.map((item) => {
-            return (
+          {orderData.map((item) => {return(item.quantity?
+            (
               <div className="row">
                 <div className="col-md-12 col-lg-8">
                   <div className="items">
@@ -130,7 +151,7 @@ const Checkout = ({ onClick }) => {
                                 id="quantity"
                                 name={item.name}
                                 value={item.quantity}
-                                min="1"
+                                min="0"
                                 className="form-control"
                               />
                             </div>
@@ -146,11 +167,17 @@ const Checkout = ({ onClick }) => {
                       <span className="price" id="cart-total">
                         ${item.amount}
                       </span>
+                      <button
+                        className="btn btn-primary btn-lg btn-block"
+                        onClick={handleDelete}
+                        id="checkout-btn"
+                        name={item.name}
+                      >Eliminar</button>
                     </div>
                   </div>
                 </div>
               </div>
-            );
+            ):null);
           })}
 
           <div className="row">
