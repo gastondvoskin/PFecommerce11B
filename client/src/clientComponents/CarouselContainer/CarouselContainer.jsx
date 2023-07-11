@@ -12,7 +12,7 @@ export default function CarouselContainer() {
 
   const slides = [
     {
-      imageSource: "../../src/assets/carouselImages/firstImage.png",
+      imageSource: "../../src/assets/diets/sinLactosa.png",
       imageAlt: "Variadadas",
       imageText: "Viandas para toda la familia",
     },
