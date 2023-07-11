@@ -12,7 +12,7 @@ import styles from "./CategoryButtons.module.css";
 import pastasImage from "../../assets/categories/pastas.jpg";
 import carnesImage from "../../assets/categories/meat.jpg";
 import saladImage from "../../assets/categories/salad.jpeg";
-import varietyImage from "../../assets/carousel/original3.jpg";
+import todas from "../../assets/categories/todas.jpg";
 
 const CategoryButtons = () => {
   const allFoods = useSelector((state) => state.foodsReducer.allFoods);
