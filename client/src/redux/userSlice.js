@@ -5,7 +5,8 @@ export const userSlice = createSlice({
     name: "users",
     initialState:{
         allUsers: [],
-        userDetail: {}
+        userDetail: {},
+        userOrders: [],
     },
     reducers: {
         getAllUsersCase: (state, action) => {
@@ -38,5 +39,15 @@ export const getUserDetailAction = (email) => async (dispatch) => {
         dispatch(getUserByNameCase(userData))
     } catch (error) {
         console.log(error)
+    }
+}
+
+export const getUserOrdersAction = (userId) => async (dispatch) => {
+    try{
+        const userOrders = await axios.get(` /user/${userId}/orders`);
+        const userOrdersData = userOrders.data;
+        dispatch(getUserOrdersCase(userOrdersData));
+    } catch (error){
+        console.log(error);
     }
 }

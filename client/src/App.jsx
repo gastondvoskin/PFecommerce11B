@@ -13,6 +13,7 @@ import ShoppingCar from "./clientViews/ShoppingCar/ShoppingCar";
 import Viandas from "./clientViews/Viandas/Viandas";
 import PaymentStatus from "./clientViews/PaymentStatus/PaymentStatus";
 import UserReview from "./clientViews/UserReview/UserReview";
+import OrderByUser from "./clientViews/OrderByUser/OrderByUser";
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/viandas" element={<Viandas />} />
         <Route path="/myprofile" element={<MyProfile />} />
+        <Route path="/orderbyuser" element={<OrderByUser/>} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/admin/*" element={<AdminPanel />} />
         <Route path="/admin/create" element={<CreateFood />} />
