@@ -12,18 +12,18 @@ export default function CarouselContainer() {
 
   const slides = [
     {
-      imageSource: "../../src/assets/carousel/1.png",
+      imageSource: "../../src/assets/carousel/firstImage.png",
       imageAlt: "Variadadas",
       imageText: "Viandas para toda la familia",
     },
 
     {
-      imageSource: "../../src/assets/carousel/2.png",
+      imageSource: "../../src/assets/carousel/secondImage.png",
       imageAlt: "Saludables",
       imageText: "Saludables",
     },
     {
-      imageSource: "../../src/assets/carousel/3.png",
+      imageSource: "../../src/assets/carousel/thirdImage.png",
       imageAlt: "Orgánicas",
       imageText: "100% orgánicas",
     },
