@@ -1,16 +1,16 @@
 const { postFavoriteController } = require("../controllers/favoriteControllers/postFavoriteController.js");
-const { getFavoritesByEmailController } = require("../controllers/favoriteControllers/getFavoritesByEmailController");
+const { getFavoritesByEmailController } = require("../controllers/favoriteControllers/getFavoritesByEmailController.js");
+const { deleteFavoriteController } = require("../controllers/favoriteControllers/deleteFavoriteController.js");
 
 const postFavoriteHandler = async (req, res) => {
     try {
         const { email, foodId } = req.body;
         if(email && foodId) {
-            const newFavorite = await postFavoriteController(email, foodId);
-            res.status(201).send('Favorito agregado');
+            const response = await postFavoriteController(email, foodId);
+            res.status(201).send(response);
         } else {
             throw new Error('Falta información en el body de la request');
-        }
-        
+        } 
     } catch (error) {
         res.status(400).send({error: error.message});
     }
@@ -26,4 +26,15 @@ const getFavoritesByEmailHandler = async (req, res) => {
     }
 };
 
-module.exports = { postFavoriteHandler, getFavoritesByEmailHandler };
+const deleteFavoriteHandler = async (req, res) => {
+    try {
+        const { email, foodId } = req.params;
+        const response = await deleteFavoriteController(email, foodId);
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(400).send({error: error.message});
+    }
+    console.log('en deleteFavoriteHandler');
+};
+
+module.exports = { postFavoriteHandler, getFavoritesByEmailHandler, deleteFavoriteHandler };

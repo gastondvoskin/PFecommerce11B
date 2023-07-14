@@ -9,6 +9,10 @@
   border-radius: 100%;
 }
 
+.isFavoriteButton {
+  background-color: var(--accentColor2);
+}
+
 .likeButton:hover {
   background-color: var(--accentColor2);
   transition: 0.5s;
