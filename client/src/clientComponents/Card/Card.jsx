@@ -41,10 +41,10 @@ export default function Card({
   if (category === "Pastas")
     categoryIcon = <img className={style.categoryIcon} src={pastas} />;
 
-  const dietsIcons = diets?.map((diet, index) => {
+  const dietsIcons = diets.map((diet, index) => {
     if (diet === "Sin TACC")
       diet = <img key={index} className={style.dietsIcon} src={sinTacc} />;
-    if (diet === "Vegetariano")
+    if (diet === "Vegetariana")
       diet = <img key={index} className={style.dietsIcon} src={vegetarian} />;
     if (diet === "Vegana")
       diet = <img key={index} className={style.dietsIcon} src={vegan} />;
@@ -95,13 +95,34 @@ export default function Card({
         axios.post("/item", bodyAddItem).catch((error) => console.log(error));
       }
     }
+    useEffect(() => {
+      if (isAuthenticated) {
+        const body = {
+          name: user?.name,
+          email: user?.email,
+        };
+        axios
+          .post("/user", body)
+          .then(async () => {
+            const userOrder = await axios
+              .post("/order", body)
+              .then((r) => r.data);
+            console.log("userOrder:", userOrder);
+            dispatch(setUserOrderCase(userOrder));
+          })
+          .then(() => {
+            console.log("Usuario y Order enviados a DB");
+          })
+          .catch((error) => console.log(error));
+      }
+    }, [isAuthenticated, user]);
   };
 
   const updateQuantity = (e) => {
     const quantity = parseInt(e.target.value);
     const amount = final_price * quantity;
     setQuantity(quantity);
-    // dispatch(deleteItemActions(id));
+    dispatch(deleteItemActions(id));
     dispatch(
       addItemsActions({
         id,
@@ -128,9 +149,8 @@ export default function Card({
         <NavLink className={style.NavLink} to={`/detail/${id}`}>
           <img src={image} alt="img not found" className={style.card_img} />
         </NavLink>
-
         <div>
-          <LikeButton foodId={id}/>
+          <LikeButton />
         </div>
       </div>
 
@@ -138,7 +158,7 @@ export default function Card({
         <h2>{name}</h2>
         <div className={style.categoryAndDiets}>
           {categoryIcon}{" "}
-          {dietsIcons?.map((dietIcon, index) => (
+          {dietsIcons.map((dietIcon, index) => (
             <span key={index}>{dietIcon}</span>
           ))}
         </div>
@@ -150,7 +170,7 @@ export default function Card({
 
       <div className={style.inputagregar}>
         <button className={style.btncar} onClick={handleClick}>
-          {isItem ? "Eliminar" : "Agregar"}
+          {isItem ? "Agregado" : "Agregar"}
         </button>
         {isItem ? (
           <input
