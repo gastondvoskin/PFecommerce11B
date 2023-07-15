@@ -7,7 +7,7 @@ Date:   Mon Jun 26 17:34:42 2023 -0300
 
 [33mcommit 57a992184a3c5bc2d5fb49e56fd0f4ca90917634[m
 Author: santilagos <sntlgs@gmail.com>
-Date:   Mon Jun 26 17:20:08 2023 -0300
+Date:   Mon Jun 26 17:20:08 2023 -030
 
     Creo componente para filtros por categoria y hago limpieza de las actions en desuso
 
