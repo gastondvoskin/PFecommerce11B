@@ -89,7 +89,7 @@ export default function Card({
         footer: 'Vianda Express',
         imageUrl: 'src/assets/logo/LogoViandaExpress.jpeg',
         imageAlt: 'vianda express',
-        timer: 5000,
+        timer: 4000,
         timerProgressBar: true,
         confirmButtonColor: 'var(--accentColor)',
         showClass: {
