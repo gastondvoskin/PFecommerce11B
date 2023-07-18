@@ -4,10 +4,12 @@
   margin-top: 60px;
   height: 350px;
   margin-bottom: 50px;
+  width: 100%;
 }
 
 .image {
   height: 350px;
   border-radius: 40px;
   margin-bottom: 30px;
+  width: 100%;
 }

@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { getUserFavoritesAction } from "../../redux/userSlice";
 import axios from "axios";
 import Swal from "sweetalert2";
+import logo from "../../assets/logo/LogoViandaExpress.jpeg"
 
 
 export default function LikeButton({ foodId }) {
@@ -50,7 +51,7 @@ export default function LikeButton({ foodId }) {
         cancelButtonText: 'No, fue un error',
         cancelButtonColor: '#FA8072',
         footer: 'Vianda Express',
-        imageUrl: 'src/assets/logo/LogoViandaExpress.jpeg',
+        imageUrl: logo,
         imageAlt: 'vianda express',
         showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -69,7 +70,7 @@ export default function LikeButton({ foodId }) {
             confirmButtonColor: '#426b1f',
             confirmButtonText: 'Entendido!',
             footer: 'Vianda Express',
-            imageUrl: 'src/assets/logo/LogoViandaExpress.jpeg',
+            imageUrl: logo,
             imageAlt: 'vianda express',
             timer: 5000,
             timerProgressBar: true,
@@ -92,7 +93,7 @@ export default function LikeButton({ foodId }) {
         confirmButtonColor: '#426b1f',
         confirmButtonText: 'Entendido!',
         footer: 'Vianda Express',
-        imageUrl: 'src/assets/logo/LogoViandaExpress.jpeg',
+        imageUrl: logo,
         imageAlt: 'vianda express',
         timer: 5000,
         timerProgressBar: true,

@@ -13,6 +13,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import 'animate.css';
+import logo from "../../assets/logo/LogoViandaExpress.jpeg"
 
 export default function Detail() {
   const { id } = useParams();
@@ -60,6 +61,8 @@ export default function Detail() {
         text: "Loguéate antes de agregar productos a tu carrito de compras.",
         icon: "error",
         footer: 'Vianda Express',
+        imageUrl: logo,
+        imageAlt: 'vianda express',
         timer: 5000,
         timerProgressBar: true,
         confirmButtonColor: 'var(--accentColor)',

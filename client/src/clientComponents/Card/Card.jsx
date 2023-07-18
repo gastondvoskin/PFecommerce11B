@@ -21,6 +21,7 @@ import vegetarian from "../../assets/diets/vegetarian.png";
 import vegan from "../../assets/diets/vegan.png";
 import sinLactosa from "../../assets/diets/sinLactosa.png";
 import sinTacc from "../../assets/diets/sinTacc.png";
+import logo from "../../assets/logo/LogoViandaExpress.jpeg"
 
 export default function Card({
   id,
@@ -87,7 +88,7 @@ export default function Card({
         text: "Loguéate antes de agregar productos a tu carrito de compras.",
         icon: "error",
         footer: 'Vianda Express',
-        imageUrl: 'src/assets/logo/LogoViandaExpress.jpeg',
+        imageUrl: logo,
         imageAlt: 'vianda express',
         timer: 4000,
         timerProgressBar: true,
