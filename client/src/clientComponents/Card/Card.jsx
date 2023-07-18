@@ -9,6 +9,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
+import 'animate.css';
 import axios from "axios";
 import { setUserOrderCase } from "../../redux/shopingCartSlice";
 import LikeButton from "../LikeButton/LikeButton";
@@ -81,11 +82,23 @@ export default function Card({
   }, []);
   const handleClick = (e) => {
     if (!isAuthenticated) {
-      Swal.fire(
-        "¡Cuidado!",
-        "Loguéate antes de agregar productos a tu carrito de compras.",
-        "error"
-      );
+      Swal.fire({ 
+        title: "¡Cuidado!",
+        text: "Loguéate antes de agregar productos a tu carrito de compras.",
+        icon: "error",
+        footer: 'Vianda Express',
+        imageUrl: 'src/assets/logo/LogoViandaExpress.jpeg',
+        imageAlt: 'vianda express',
+        timer: 5000,
+        timerProgressBar: true,
+        confirmButtonColor: 'var(--accentColor)',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      });
     } else {
       if (isItem) {
         setIsItem(false);

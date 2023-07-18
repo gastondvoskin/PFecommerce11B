@@ -12,6 +12,7 @@ import {
 } from "../../redux/shopingCartSlice.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
+import 'animate.css';
 
 export default function Detail() {
   const { id } = useParams();
@@ -54,11 +55,22 @@ export default function Detail() {
   const handleClick = (e) => {
     if (!isAuthenticated) {
       //alert('¡Cuidado! Logueate antes de agregar productos a tu carrito de compras. ¡Gracias!')
-      Swal.fire(
-        "¡Cuidado!",
-        "Logueate antes de agregar productos a tu carrito de compras. ¡Gracias!",
-        "error"
-      );
+      Swal.fire({
+        title: "¡Cuidado!",
+        text: "Loguéate antes de agregar productos a tu carrito de compras.",
+        icon: "error",
+        footer: 'Vianda Express',
+        timer: 5000,
+        timerProgressBar: true,
+        confirmButtonColor: 'var(--accentColor)',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      });
+      
     } else {
       if (isItem) {
         setIsItem(false);

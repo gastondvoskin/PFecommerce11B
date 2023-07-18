@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "animate.css": "^4.1.1"
+  }
+}
