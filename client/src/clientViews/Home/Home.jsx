@@ -9,8 +9,7 @@ import CarouselContainer from "../../clientComponents/CarouselContainer/Carousel
 import { Link } from "react-router-dom";
 import { getUserFavoritesAction } from "../../redux/userSlice";
 import { setUserOrderCase, getItems } from "../../redux/shopingCartSlice";
-// import logo from "../../assets/logo/logo-transparent.png";
-import food from "../../assets/carousel/original2.jpeg";
+import Mission from "../../clientComponents/Mission/Mission";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -67,8 +66,14 @@ const Home = () => {
 
   /* if (isLoading) return <h1>Iniciando sesión...</h1>; */
 
+  console.log("user.given_name: ", user?.given_name);
   return (
     <div className={styles.mainContainer}>
+      {!user?.given_name ? "" : (
+        <div className={styles.greetingContainer}>
+          <h1>{`Hola, ${user.given_name}!`}</h1>
+        </div>
+      )}
       <CarouselContainer />
 
       <section>
@@ -79,34 +84,10 @@ const Home = () => {
         </Link>
       </section>
 
-      <section className={styles.viewMission}>
-        <div>
-          {/* <img src={logo} alt="logo" /> */}
-          <h2>Comer saludable, es una opción!</h2>
-          <p className={styles.description}>
-            Nos dedicamos a promover una alimentación saludable tanto en el
-            trabajo como en el hogar. Nuestra misión es brindarte opciones
-            nutritivas y sabrosas que se adapten a tu estilo de vida.
-          </p>
-          <ul>
-            <li>
-              <span>1- Elegí tu vianda</span>
-            </li>
-            <li>
-              <span>2- Encargala online</span>
-            </li>
-            <li>
-              <span>3- Disfrutala donde quiera que estés!</span>
-            </li>
-          </ul>
-        </div>
-        <div className={styles.foodImage}>
-          <img src={food} alt="food" />
-        </div>
-      </section>
+      <Mission />
 
       <section className={styles.sectionContainer}>
-        <h1>Ofertas de la semana</h1>
+        <h2 className={styles.sectionTitle}>Ofertas de la semana</h2>
         <CardsContainer
           currentFoods={foodsWithDiscounts}
           allItems={allItems}
@@ -115,7 +96,7 @@ const Home = () => {
       </section>
 
       <section className={styles.sectionContainer}>
-        <h1>Mejor rankeadas</h1>
+        <h2 className={styles.sectionTitle}>Mejor rankeadas</h2>
         <CardsContainer
           currentFoods={foodsWithScoreHigherThan4}
           allItems={allItems}
@@ -127,7 +108,7 @@ const Home = () => {
         ""
       ) : (
         <section className={styles.sectionContainer}>
-          <h1>Mis favoritos</h1>
+          <h2 className={styles.sectionTitle}>Mis favoritos</h2>
           <CardsContainer
             currentFoods={favorites}
             allItems={allItems}
@@ -135,6 +116,13 @@ const Home = () => {
           />
         </section>
       )}
+      <section>
+        <Link to="viandas">
+          <button className={styles.viewAllButton}>
+            VER TODAS LAS VIANDAS
+          </button>
+        </Link>
+      </section>
     </div>
   );
 };

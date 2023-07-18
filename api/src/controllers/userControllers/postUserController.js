@@ -1,5 +1,5 @@
 const { User } = require("../../db");
-const sendEmailWelcome = require("../../nodemailer/sendEmail");
+const sendEmailWelcome = require("../../nodemailer/SendEmailWelcome/sendEmail.js");
 
 const postUserController = async (name, email, type, status, address) => {
   let newUser = {};

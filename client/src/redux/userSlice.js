@@ -96,13 +96,14 @@ export const getUserFavoritesAction = (email) => async (dispatch) => {
   }
 };
 
-export const postUserReviewAction = (foodId, userId, comment, rating) => async (dispatch) => {
+export const postUserReviewAction = (foodId, userId, comment, rating,itemId) => async (dispatch) => {
   try {
     const newReview = {
       foodId,
       userId,
       comment,
       rating,
+      itemId
     };
 
     const response = await axios.post("http://localhost:3001/review", newReview);
