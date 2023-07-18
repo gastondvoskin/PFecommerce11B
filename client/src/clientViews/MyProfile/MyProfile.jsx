@@ -6,6 +6,7 @@ import axios from "axios";
 import styles from "./MyProfile.module.css";
 import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo/LogoViandaExpress.jpeg"
 
 const MyProfile = () => {
   const dispatch = useDispatch();
