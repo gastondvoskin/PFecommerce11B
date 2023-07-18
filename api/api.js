@@ -6,7 +6,7 @@ const foods = [
     description: "Esta exquisita cinta de garbanzo está acompañada de espinacas frescas y se sirve con una deliciosa salsa de setas portobello.",
     category: "Pastas",
     initial_price: 2700,
-    discount: 95,
+    discount: 0,
     final_price: 2700,
     status: true,
     total_score: 0,

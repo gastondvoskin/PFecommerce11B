@@ -33,7 +33,7 @@ const getAdminFoodHandler = async (req, res) => {
 const postFoodHandler = async (req, res) => {
     const { description, name, initial_price, discount, diets, category } = req.body;
     const image = req.file.buffer;
-    const final_price = initial_price * (1 - (discount / 100));
+    const final_price = Math.ceil(initial_price * (1 - (discount / 100)));
     // console.log(image);
     // convierto en array 'diets' que llega como string
     const diet=diets.split(',');
@@ -56,7 +56,7 @@ const putFoodHandler = async (req, res) => {
     try {
         const { id } = req.params;
         const { name, diet, description, initial_price, discount, status, category } = req.body;
-        const final_price = initial_price ? initial_price * (1 - (discount / 100)) : undefined;
+        const final_price = initial_price ? Math.ceil(initial_price * (1 - (discount / 100))) : undefined;
         const image = req.file ? req.file.buffer : null;
         console.log(image);
         console.log(req.body);
