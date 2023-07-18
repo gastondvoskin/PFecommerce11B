@@ -13,6 +13,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'animate.css';
 import logo from "../../assets/logo/LogoViandaExpress.jpeg"
 =======
@@ -20,6 +21,13 @@ import GoBackHome from "../../clientComponents/GoBackHome/GoBackHome.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 >>>>>>> 001f23705c8ca3ad3f1b9668857809e51b329ada
+=======
+import 'animate.css';
+import logo from "../../assets/logo/LogoViandaExpress.jpeg"
+import GoBackHome from "../../clientComponents/GoBackHome/GoBackHome.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+>>>>>>> a4eb6dca0569c59aca93efdc0b50b25212e56dc4
 
 export default function Detail() {
   const { id } = useParams();

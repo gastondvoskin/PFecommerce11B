@@ -1,16 +1,9 @@
 .mainContainer {
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
-  margin-top: 60px;
-  height: 350px;
-  margin-bottom: 50px;
-  width: 100%;
-=======
   margin-top: 40px;
   height: 250px;
   margin-bottom: 30px;
->>>>>>> 001f23705c8ca3ad3f1b9668857809e51b329ada
 }
 
 .image {
