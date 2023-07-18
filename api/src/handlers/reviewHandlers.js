@@ -30,8 +30,8 @@ const getReviewsHandler = async (req, res) => {
 
   const postReviewHandler = async (req, res) => {
     try {
-        const {foodId, userId, comment , rating} = req.body;
-        const newReview = await postReviewController(foodId,userId,comment,rating);
+        const {foodId, userId, comment , rating,itemId} = req.body;
+        const newReview = await postReviewController(foodId,userId,comment,rating,itemId);
         res.status(200).send(newReview)
     } catch (error) {
         res.status(400).send({ error: error.message });

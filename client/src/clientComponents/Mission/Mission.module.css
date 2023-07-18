@@ -1,0 +1,36 @@
+.mainContainer {
+  width: 62%;
+  margin: 30px 0px 50px 0px;
+  padding: 20px;
+  background-color: white;
+  border: 5px solid var(--accentColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+.leftContainer {
+  width: 70%;
+}
+
+.description {
+  margin: 0px 20px 20px 10px;
+  font-size: 17px;
+  padding: 10px 0px 20px;
+}
+
+ol {
+  list-style-type: none;
+}
+
+ol li {
+  color: var(--accentColor);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.foodImage img {
+  width: 80%;
+  border-radius: 20px;
+}

@@ -183,9 +183,14 @@ export default function Card({
           ))}
         </div>
 
-        <div className={style.priceContainer}>
-          <p>${final_price}</p>
-        </div>
+          {discount === 0 ? (<div className={style.priceContainer}><span className={style.normalPrice}>${final_price}</span></div>) : (
+            <div className={style.priceContainer}>
+              <span className={style.discount}>🎁 {discount}%</span>
+              <span className={style.previousPrice}>${initial_price}</span>
+              <span className={style.currentPrice}>${final_price}</span>
+            </div>
+          )}
+
       </div>
 
       <div className={style.inputagregar}>

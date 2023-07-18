@@ -1,13 +1,22 @@
-const { Review, Food, sequelize } = require("../../db");
+const { Review, Food, sequelize,Item } = require("../../db");
 
-const postReviewController = async (foodId, userId, comment, rating) => {
+const postReviewController = async (foodId, userId, comment, rating,itemId) => {
   const newReview = await Review.create({
     FoodId: foodId,
     UserId: userId,
     comment,
-    rating
+    rating,
+    ItemId:itemId
   });
 
+  await Item.update(
+    { ReviewId: newReview.id },
+    {
+      where: {
+        id: itemId
+      },
+    }
+  );
   const averageRating = await Review.findOne({
     attributes: [[sequelize.fn('AVG', sequelize.col('rating')), 'averageRating']],
     where: { FoodId: foodId }
