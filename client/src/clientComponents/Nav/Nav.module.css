@@ -8,7 +8,9 @@
   background-color: var(--myWhite);
   color: black;
   box-shadow: 0px 10px 10px 0px var(--accentColor);
+  
 }
+
 
 /* LOGO */
 .logo {
@@ -28,9 +30,9 @@
 
 .normalLink, .user {
   text-decoration: none;
-  margin: 60px;
   font-size: 18px;
   color: black;
+  
 }
 
 .normalLink:hover {
@@ -50,7 +52,7 @@
 .userContainer {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position:relative;
 }
 
 .options { 
@@ -62,14 +64,102 @@
   background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 10px;
+  z-index: 200;
 }
 
 .option {
   color: black;
   text-decoration: none;
   padding: 5px 0;
+  margin-left: 5px;
 }
 
 .option:hover {
   color: var(--accentColor);
+}
+
+.navul{
+    display: flex;
+    list-style: none;
+    margin-top: 19px;
+    justify-content: space-around;
+}
+.navli{
+  margin: 0px 40px 0px 40px;
+    line-height: 60px;
+    width: max-content;
+}
+.menumobil{
+  margin: 0 10px;
+  cursor: pointer;
+  display: none;
+}
+
+.userul{
+  display: flex;
+  position: absolute;
+}
+
+.userli{
+  float: left;
+  position: fixed;
+}
+
+
+@media screen and (max-width: 780px){
+  .navul{
+    display: none;
+  }
+
+  .activeLink {
+    margin: 0px;
+    border-top: 4px solid var(--accentColor);
+  color: var(--accentColor);
+  }
+  .normalLink, .user {
+    color: black;
+  }
+
+  .navmenumobil{
+    position: absolute;
+    display: block;
+    list-style: none;
+    background-color: var(--accentColor2);
+    left: 0;
+    top: 110px;
+    transition: all 0.5s ease-out;
+    width: 100%; 
+    padding-left: 0px;
+    z-index: 200;
+    height: 470px;
+  }
+
+  .navli{
+    text-align: center;
+    padding: 0px;
+    width: 100%;
+    transition: all 0.5s ease;
+    font-size: 18px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+  .menumobil{
+    display: block;
+    position: inherit;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    height: 65px;
+    color: var(--accentColor2);
+    font-size: 33px;
+  }
+  .option {
+    margin-left: 335px;
+  }
+
+  .options { 
+    background-color: rgba(0, 128, 0, 0);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+  }
 }

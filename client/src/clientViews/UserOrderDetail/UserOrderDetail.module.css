@@ -1,0 +1,39 @@
+.orderdiv{
+  padding: 5px 0px 5px 10px;
+}
+.destable{
+  border-collapse: collapse;
+  min-width: 1111px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.destable thead tr {
+  background-color: var(--accentColor2);
+  color: #ffffff; 
+  text-align: middle;
+  height: 40px;
+  font-size: 18px;
+}
+
+.destable th .destable td {
+  padding: 12px 15px;
+}
+
+.destable tbody tr {
+  border-bottom: 1px solid #dddddd; 
+  background: white;
+  } 
+  .destable tbody tr:nth-of-type(even) { 
+      background-color: #f3f3f3; 
+  }
+  .destable tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+}
+.star {
+  color: gray;
+  font-size: 15px;
+}
+.star_filled {
+  color: gold;
+  font-size: 15px;
+}

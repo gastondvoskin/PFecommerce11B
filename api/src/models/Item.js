@@ -9,31 +9,31 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-      food_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      food_image: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        isURL: false,
-      },
+      // food_name: {
+      //   type: DataTypes.STRING,
+      //   allowNull: true,
+      // },
+      // food_image: {
+      //   type: DataTypes.STRING,
+      //   allowNull: true,
+      //   isURL: false,
+      // },
       quantity: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       final_price: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: true,
       },
       amount: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: true,
       },
-      amount:{
-        type: DataTypes.FLOAT,
-        allowNull: false,
-      }
+      // amount: {
+      //   type: DataTypes.FLOAT,
+      //   allowNull: true,
+      // }
     },
     { timestamps: false }
   );

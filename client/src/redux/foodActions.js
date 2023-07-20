@@ -2,153 +2,184 @@
 
 import axios from "axios";
 
-import { getAllFoods, getFoodsByName,orderFoods,activeFilteredFood,setOrder,setCurrentPage,filterByCategory,setCategory,setDiet,filterByDiet, addItems, deleteItems/* , getFoodById */ } from "./foodSlice.js";
-import { Alert } from "bootstrap";
-
+import {
+  getAllFoods,
+  getFoodsByName,
+  orderFoods,
+  activeFilteredFood,
+  setOrder,
+  setCurrentPage,
+  filterByCategory,
+  setCategory,
+  setDiet,
+  filterByDiet,
+  addItems,
+  deleteItems, /* , getFoodById */
+  getAdminFoods,
+  putItems,
+} from "./foodSlice.js";
 
 export const getFoods = () => async (dispatch) => {
-    try {
-        const response = await axios.get("/food"); 
-        const allFoods = response.data;
-        dispatch(getAllFoods(allFoods));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    const response = await axios.get("/food");
+    const allFoods = response.data;
+    dispatch(getAllFoods(allFoods));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAdminFoodsAction = () => async (dispatch) => {
+  try {
+    const response = await axios.get("/food/admin")
+      .then(r => r.data)
+    dispatch(getAdminFoods(response));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getFoodsByNameAction = (name) => async (dispatch) => {
-    try {
-        const response = await axios.get("/food?name=" + name); 
-        const foodsByName = response.data;
-        dispatch(getFoodsByName(foodsByName));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    const response = await axios.get("/food?name=" + name);
+    const foodsByName = response.data;
+    dispatch(getFoodsByName(foodsByName));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const orderFoodsAction = (payload) => async (dispatch) => {
-    try {
-        console.log('action')
-        dispatch(orderFoods(payload));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    console.log("action");
+    dispatch(orderFoods(payload));
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const setOrderAction = (payload) => async (dispatch) => {
-    try {
-        dispatch(setOrder(payload));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    dispatch(setOrder(payload));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const activeFilteredFoodsAction = (payload) => async (dispatch) => {
-    try {
-        dispatch(activeFilteredFood(payload));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    dispatch(activeFilteredFood(payload));
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const setCurrentPageAction = (payload) => async (dispatch) => {
-    try {
-        dispatch(setCurrentPage(payload));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    dispatch(setCurrentPage(payload));
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const filterByCategoryAction = (payload) => async (dispatch) => {
-    try {
-        dispatch(filterByCategory(payload));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    dispatch(filterByCategory(payload));
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const filterByDietAction = (payload) => async (dispatch) => {
-    try {
-        dispatch(filterByDiet(payload));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    dispatch(filterByDiet(payload));
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const setCategoryAction = (payload) => async (dispatch) => {
-    try {
-        dispatch(setCategory(payload));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    dispatch(setCategory(payload));
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const setDietAction = (payload) => async (dispatch) => {
-    try {
-        dispatch(setDiet(payload));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    dispatch(setDiet(payload));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
+export const postFood = (input) => async (dispatch) => {
+  try {
+    const formData = new FormData();
+    formData.append("name", input.name);
+    formData.append("description", input.description);
+    formData.append("category", input.category);
+    formData.append("diet", input.diets);
+    formData.append("initial_price", input.initial_price);
+    formData.append("discount", input.discount);
+    formData.append("image", input.image);
+    console.log(formData);
+    await axios.post("/food", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    dispatch(postFoods());
+  } catch (error) {
+    alert(error.message);
+  }
+};
 
-
-export const postFood=(input)=>async (dispatch)=> {
-    try {
-        const formData = new FormData();
-        formData.append("name", input.name);
-        formData.append("description", input.description);
-        formData.append("category", input.category);
-        formData.append("diet", input.diets);
-        formData.append("initial_price", input.initial_price);
-        formData.append("discount", input.discount);
-        formData.append("image", input.image);
-        console.log(formData);
-        await axios.post("/food", formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-        });
-        dispatch(postFoods());
-        } catch (error) {
-            alert (error.message)
-        }
-}
-
-export const putFoods=(input)=>async (dispatch)=>{
-    try{
-        const formData = new FormData();
-        formData.append("name", input.name);
-        formData.append("description", input.description);
-        formData.append("status", input.status);
-        formData.append("initial_price", input.initial_price);
-        formData.append("discount", input.discount);
-        formData.append("image", input.image);
-        console.log(formData);
-        await axios.put(`/${input.id}`,formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },})
-    }catch(error){
-        alert (error.message)
-    }
+export const putFoods = (input) => async (dispatch) => {
+  try {
+    const formData = new FormData();
+    formData.append("name", input.name);
+    formData.append("description", input.description);
+    formData.append("status", input.status);
+    formData.append("initial_price", input.initial_price);
+    formData.append("discount", input.discount);
+    formData.append("image", input.image);
+    console.log(formData);
+    await axios.put(`/${input.id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  } catch (error) {
+    alert(error.message);
+  }
 };
 // ORDER ITEMS
-export const addItemsActions = (id, name, image,  final_price, quantity=1) => (dispatch) => {
+export const addItemsActions = (id, name, image,  final_price, quantity,amount) => (dispatch) => {
     try {
-        const amount=quantity*final_price
+        amount=quantity*final_price
         dispatch(addItems(id, name, image, final_price, quantity,amount));
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
+  };
+
+export const deleteItemActions = ({FoodId,id}) =>async (dispatch) => {
+  try {
+    await axios.delete(`/item/${id}`);
+    // console.log("deleteItems", FoodId);
+    dispatch(deleteItems(FoodId));
+  } catch (error) {
+    console.log(error);
+  }
 };
-
-export const deleteItemActions = (id) => (dispatch) => {
-    try {
-        dispatch(deleteItems(id));
-    } catch (error) {
-        console.log(error);
-    }
+export const putItemActions=({id,quantity,amount})=>async (dispatch)=>{
+  try{
+    await axios.put('/item',{id,quantity,amount});
+    dispatch(putItems({id,quantity,amount}));
+  }catch(error){
+    console.log(error);
+  }
 }
-
 // Do not delete. Uncomment and test when the endpoint `/food/${id}` is created
 // export const getFood = (id) => async (dispatch) => {
 //     try {
-//         const response = await axios.get(`/food/${id}`); 
+//         const response = await axios.get(`/food/${id}`);
 //         const foodById = response.data;
 //         dispatch(getFoodById(foodById));
 //     } catch (error) {

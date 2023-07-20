@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { activeFilteredFoodsAction, orderFoodsAction, setOrderAction } from '../../redux/foodActions';
+import styles from "../FilterDietsOptions/FilterDietsOptions.module.css"
 
 export default function OrderOptions () {
     const allFoods  = useSelector((state) => state.foodsReducer.allFoods);
@@ -82,6 +83,7 @@ export default function OrderOptions () {
             <select 
             onChange={(e) => handlerSelect(e)}
             value={orderBy}
+            className={styles.cat}
             >
                 <option value="" disabled hidden>Ordenar</option>
                 <option value="expensive">Mayor precio</option>

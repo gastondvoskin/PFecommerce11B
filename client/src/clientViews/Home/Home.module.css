@@ -1,105 +1,40 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  text-align: center;
+  text-decoration: none;
 }
 
-
-/* CAROUSEL */
-.Carousel {
-  overflow: hidden;
-  width: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.Carousel img {
-  height: 300px;
-  border-radius: 40px;
-  margin-bottom: 30px;
-}
-
-.CarouselText {
-  color: black;
-  justify-content: center;
-  background-color: white;
-  border: solid var(--accentColor) 2px;
-  border-radius: 20px;
-}
-
-
-.filtros {
-  width: 450px;
-  height: 100px;
-}
-
-.filtros2 {
-  display: flex;
-  justify-content: space-between;
-  height: 50px;
-}
-
-.asereje {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.notFoundMessage {
-  color: var(--alertColor);
-}
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
-.cardsContiner {
+.sectionContainer {
   width: 100%;
+}
+
+.cardsContainer {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
-  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-.card {
-  width: 269px;
-  height: 366px;
-  border-radius: 24px;
-  border: 2px solid #e6e6e6;
-  background: #fafaf5;
-  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+.viewAllButton {
+  background-color: var(--accentColor);
+  border-radius: 15px;
+  padding: 20px;
+  border: solid 4px white;
+  color: white;
+  margin: 30px;
+  font-size: 30px;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
 }
 
-.card:hover {
-  box-shadow: 0 0 25px var(--accentColor);
-}
-
-.card_img {
-  width: 245px;
-  border-radius: 24px;
-  height: 186px;
-}
-
-.card h2 {
-  text-align: start;
-  font-size: 15px;
-  padding: 10px;
-  font-weight: bold;
-  color: #000;
-  height: 60px;
-  margin-top: 20px;
-}
-
-.card p {
-  text-align: start;
-  font-size: 25px;
-  font-weight: bold;
-  color: #426b1f;
-  margin-left: 15px;
+.viewAllButton:hover {
+  background-color: var(--accentColor2);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
 }

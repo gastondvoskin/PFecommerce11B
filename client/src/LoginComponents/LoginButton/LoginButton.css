@@ -1,0 +1,11 @@
+.login-button {
+    font-size: 16px; /* Tamaño de fuente */
+    width: 150px; /* Ancho del botón */
+    height: 40px; /* Alto del botón */
+    margin-top: 10px; /* Margen superior */
+    margin-right: 20px; /* Margen derecho */
+    text-align: center; /* Centrar el texto horizontalmente */
+    line-height: 40px; /* Centrar el texto verticalmente */
+    background-color: var(--accentColor2);
+  }
+  

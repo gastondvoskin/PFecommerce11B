@@ -1,9 +1,43 @@
+
+
+
+.tds {
+  padding: 12px 15px 0px 15px;
+}
+
+.tbodys tr {
+  border-bottom: 1px solid #dddddd; 
+  } 
+  .tbodys tr:nth-of-type(even) { 
+      background-color: #f3f3f3; 
+  }
+  .tbodys tr:last-of-type {
+      border-bottom: 2px solid #009879;
+}
+
+.viewAllButton {
+  background-color: var(--accentColor);
+  border-radius: 5px;
+  padding: 1px;
+  border: solid 4px white;
+  color: white;
+  font-size: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.viewAllButton:hover {
+  background-color: var(--accentColor2);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
+}
+
+/*
 .listProductsItem {
   justify-content: space-between;
   align-items: center;
     display: flex;
-    /* Agrega los estilos para el componente ListProductsItem */
-    /* Por ejemplo: */
     background-color: white;
     border: 1px solid #ccc;
     padding: 10px;
@@ -13,6 +47,5 @@
   .left{
     display: flex;
   }
-  
-  /* Puedes definir más estilos aquí */
+  */
   

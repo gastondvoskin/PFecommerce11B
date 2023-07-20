@@ -10,6 +10,7 @@ import Paginado from "../../clientComponents/Paginado/Paginado";
 import OrderOptions from "../../clientComponents/orderOptions/orderOptions.jsx";
 import CategoryButtons from "../../clientComponents/CategoryButtons/CategoryButtons";
 import FilterDietsOptions from "../../clientComponents/FilterDietsOptions/FilterDietsOptions";
+import { setUserOrderCase, getItems } from "../../redux/shopingCartSlice";
 
 const Viandas = () => {
   const dispatch = useDispatch();
@@ -22,23 +23,10 @@ const Viandas = () => {
     (state) => state.foodsReducer.activeFilteredFoods
   );
   const { isLoading, user, isAuthenticated } = useAuth0();
-  const allItems = useSelector((state) => state.foodsReducer.orderItems);
-
-  useEffect(() => {
-    let body = {};
-    if (isAuthenticated) {
-      body = {
-        name: user?.name,
-        email: user?.email,
-      };
-    } else {
-      body = {
-        type: "guest",
-      };
-    }
-    axios.post("/user", body).catch((error) => console.log(error));
-  }, [isAuthenticated, user]);
-
+  const orderUser = useSelector(
+    (state) => state.shopingCartReducer.pendingOrder
+  );
+  const allItems = useSelector((state) => state.shopingCartReducer.itemsOrder);
   useEffect(() => {
     if (!allFoods.length) {
       axios.get("/api").then(() => dispatch(getFoods()));
@@ -46,6 +34,25 @@ const Viandas = () => {
       dispatch(getFoods());
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isAuthenticated && !allItems.length) {
+      const body = {
+        email: user?.email,
+      };
+      axios
+        .post("/order", body)
+        .then((r) => r.data)
+        .then((data) => {
+          dispatch(setUserOrderCase(data));
+          if (data.Items?.length) dispatch(getItems(data.Items));
+          console.log("DB Order");
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [isAuthenticated, user, allItems, dispatch]);
+
+  console.log("Viandas: ", allItems);
 
   const foodsPerPage = 8;
   const indexOfLastFood = currentPage * foodsPerPage;
@@ -88,7 +95,11 @@ const Viandas = () => {
             No se encontraron resultados
           </h1>
         ) : (
-          <CardsContainer currentFoods={currentFoods} allItems={allItems} />
+          <CardsContainer
+            currentFoods={currentFoods}
+            allItems={allItems}
+            orderId={orderUser?.id}
+          />
         )}
       </div>
     </div>

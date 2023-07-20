@@ -1,7 +1,6 @@
 .productos {
   /* Agrega los estilos para el componente Productos */
   /* Por ejemplo: */
-  background-color: #f2f2f2;
   padding: 20px;
 }
   
@@ -11,4 +10,50 @@
   display:flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.destable{
+  border-collapse: collapse;
+  min-width: 1111px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.destable thead tr {
+  background-color: var(--accentColor2);
+  color: #ffffff; 
+  text-align: middle;
+  height: 40px;
+  font-size: 18px;
+}
+
+.destable th .destable td {
+  padding: 12px 15px;
+}
+
+.destable tbody tr {
+  border-bottom: 1px solid #dddddd; 
+  } 
+  .destable tbody tr:nth-of-type(even) { 
+      background-color: #f3f3f3; 
+  }
+  .destable tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+}
+
+.viewAllButton {
+  background-color: var(--accentColor);
+  border-radius: 15px;
+  padding: 1px;
+  border: solid 4px white;
+  color: white;
+  font-size: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.viewAllButton:hover {
+  background-color: var(--accentColor2);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
 }

@@ -1,0 +1,57 @@
+.orderdiv{
+    padding: 5px 0px 5px 10px;
+}
+
+.orderfilter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.ordertable{
+    border-collapse: collapse;
+    min-width: 1111px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .ordertable thead tr {
+    background-color: var(--accentColor2);
+    color: #ffffff; 
+    text-align: middle;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .ordertable th .ordertable td {
+    padding: 12px 15px;
+  }
+  
+  .ordertable tbody tr {
+    border-bottom: 1px solid #dddddd; 
+    } 
+    .ordertable tbody tr:nth-of-type(even) { 
+        background-color: #f3f3f3; 
+    }
+    .ordertable tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+  }
+
+  .btnorder {
+    background-color: var(--accentColor);
+    border-radius: 5px;
+    padding: 1px;
+    border: solid 4px white;
+    color: white;
+    font-size: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .btnorder:hover {
+    background-color: var(--accentColor2);
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: 0.5s;
+  }

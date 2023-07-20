@@ -1,0 +1,11 @@
+.cat{
+    margin: 10px;
+    background-color: var(--accentColor);    
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+.cat:hover{
+    background-color: var(--accentColor2);
+    transition: 0.5s;
+  }

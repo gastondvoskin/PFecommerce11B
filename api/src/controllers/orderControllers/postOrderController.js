@@ -1,16 +1,46 @@
 const { User } = require("../../db");
 const { Order } = require("../../db");
+const{ Item } = require("../../db");
+const {Food} = require("../../db");
 
 const postOrderController = async (email) => {
+  try {
     const userByEmail = await User.findOne({
-        where: { email }
+      where: { email },
     });
-    const userId = userByEmail.dataValues.id
-    const newOrder = await Order.create({ UserId: userId })
+    const userId = userByEmail.dataValues.id;
 
+    let userOrder = await Order.findOne({
+      where: {
+        UserId: userId,
+        status: "PENDIENTE",
+      },
+      include: {
+        model: Item,
+        include: Food,
+      },
+    });
 
-
-    console.log(userId);
+    if (!userOrder) {
+      userOrder = await Order.create({
+        UserId: userId,
+        status: "PENDIENTE",
+      }, {
+        include: [
+          {
+            model: Item,
+            include: Food,
+          },
+        ],
+      });
+    }
+    // console.log(userOrder)
+    return userOrder;
+    
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-module.exports = { postOrderController }
+module.exports = { postOrderController };
+

@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-      email: { 
+      email: {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
@@ -23,7 +23,13 @@ module.exports = (sequelize) => {
       },
       type: {
         type: DataTypes.STRING,
-        defaultValue: "client",
+        defaultValue: "Client",
+        validate: {
+          isIn: {
+            args: [["Client", "Admin"]],
+            msg: "El tipo de usuario debe ser 'Client' o 'Admin'",
+          },
+        },
       },
       status: {
         type: DataTypes.BOOLEAN,

@@ -7,6 +7,8 @@ import axios from "axios";
 import { getFoods, putFoods } from "../../redux/foodActions.js";
 import { useNavigate } from 'react-router-dom';
 import styles from "./EditFood.module.css";
+import Swal from "sweetalert2";
+import validation from "../CreateFood/validation";
 
 export default function EditFood() {
   const dispatch = useDispatch();
@@ -14,7 +16,15 @@ export default function EditFood() {
   const { id } = useParams();
   const allFoods = useSelector((state) => state.foodsReducer.allFoods);
 
-  const [editableFields, setEditableFields] = useState(false);
+  const [errors, setErrors] = useState({
+    id: "",
+    name: "",
+    initial_price: "",
+    discount: "",
+    status: "",
+    description: "",
+    image: null,
+  });
 
   const [formData, setFormData] = useState({
     id: "",
@@ -41,11 +51,7 @@ export default function EditFood() {
     }
   }, [allFoods, id]);
 
-  const handleCheck = (e) => {
-    const { name, checked } = e.target;
-    setEditableFields(!editableFields);
-  };
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -63,6 +69,73 @@ export default function EditFood() {
   };
 
   const handleEdit = async (e) => {
+    setErrors(validation(formData));
+    if (
+      !formData.name ||
+      !formData.description ||
+      !formData.category ||
+      !formData.diets.length ||
+      formData.initial_price < 0 ||
+      formData.discount < 0 ||
+      formData.discount > 100
+    ) {
+      //alert(`Llena todos los campos para crear la vianda`);
+      Swal.fire(
+        'Imposible de modificar Vianda!',
+        'Por favor llenar todos los campos',
+        'warning'
+      )
+    } else {
+    e.preventDefault();
+    //var verificar= window.confirm(`Está a punto de modificar la vianda`)
+    Swal.fire({
+      title: 'Estas Seguro?',
+      text: "¡Puedes modificar en cualquier momento!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, ¡Modificar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        const form = new FormData();
+        for (let key in formData) {
+          form.append(key, formData[key]);
+        }
+        try {
+            axios.put(`/food/${id}`, formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            });
+            //alert(`Receta de ${formData.name} modificada`); 
+            Swal.fire(
+              'Modificado!',
+              `Receta de ${formData.name} modificado.`,
+              'success'
+            )
+            navigate('/admin');
+        } catch (error) {
+            //alert(error.message)
+            Swal.fire(
+              'Error del sistema',
+              `${error.message}`,
+              'warning',
+              )
+        }
+      }else if(result.dismiss === Swal.DismissReason.cancel){
+        Swal.fire(
+        'Cancelado',
+        'Los cambios no se guardaron',
+        'success'
+        )
+      }
+    })
+  }
+  };
+
+  /*const handleEdit = async (e) => {
     e.preventDefault();
     var verificar= window.confirm(`Está a punto de modificar la vianda`)
     if(verificar){
@@ -71,7 +144,7 @@ export default function EditFood() {
         form.append(key, formData[key]);
       }
       try {
-          await axios.put(`http://localhost:3001/food/${id}`, formData, {
+          await axios.put(`/food/${id}`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -82,8 +155,50 @@ export default function EditFood() {
           alert(error.message)
       }
     }
+  };*/
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    //var verificar= window.confirm(`Está a punto de eliminar la vianda`)
+    Swal.fire({
+      title: 'Estas Seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, ¡Eliminar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        try {
+          axios.delete(`/food/${id}`);
+            //alert(`Receta de ${formData.name} modificada`); 
+            Swal.fire(
+              'Eliminado!',
+              `Vianda ${formData.name} Eliminado.`,
+              'success'
+            )
+            navigate('/admin');
+        } catch (error) {
+            //alert(error.message)
+            Swal.fire(
+              'Error del sistema',
+              `${error.message}`,
+              'warning',
+              )
+        }
+      }else if(result.dismiss === Swal.DismissReason.cancel){
+        Swal.fire(
+        'Cancelado',
+        'Los cambios no se guardaron',
+        'success'
+        )
+      }
+    })
   };
 
+  /*
   const handleDelete = async (e) => {
     e.preventDefault();
     var verificar= window.confirm(`Está a punto de eliminar la vianda`)
@@ -97,6 +212,7 @@ export default function EditFood() {
       }
     }
   };
+  */
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -113,7 +229,7 @@ export default function EditFood() {
         <h4>Editar Vianda</h4>
         <div className={styles.containergen}>
       <div className={styles.container1}>
-        <div className={styles.hab}>
+        {/* <div className={styles.hab}>
         <label className={styles.hablab}>Habilitar edición</label>
         <input
           type="checkbox"
@@ -121,23 +237,29 @@ export default function EditFood() {
           onChange={handleCheck}
           value="name"
         />
-        </div>
+        </div> */}
         <h3 className={style["h3-title"]}>Nombre: </h3>
         <input
           type="text"
           name="name"
           value={formData.name}
-          disabled={!editableFields}
+          // disabled={!editableFields}
           onChange={handleChange}
           
         />
+        {errors.name ? (
+              <div className={styles.errorsContainer}>
+                <p className={styles.errorMessage}>{errors.name}</p>
+              </div>
+              
+            ) : null}
         <img src={formData.image} alt="img not found" className={styles.image} />
       <input
         type="file"
         accept="image/*"
         name="image"
         onChange={handleImageChange}
-        disabled={!editableFields}
+        // disabled={!editableFields}
       />
       </div>
       <div className={styles.container2}>
@@ -149,9 +271,14 @@ export default function EditFood() {
         type="text"
         name="description"
         value={formData.description}
-        disabled={!editableFields}
+        // disabled={!editableFields}
         onChange={handleChange}
       />
+      {errors.description ? (
+              <div className={styles.errorsContainer}>
+                <p className={styles.errorMessage}>{errors.description}</p>
+              </div>
+            ) : null}
       <label>
         <h3 className={style["h3-title"]}>Precio Inicial: </h3>
       </label>
@@ -159,9 +286,14 @@ export default function EditFood() {
         type="number"
         name="initial_price"
         value={formData.initial_price}
-        disabled={!editableFields}
+        // disabled={!editableFields}
         onChange={handleChange}
       />
+      {errors.initial_price ? (
+                <div>
+                  <p className={styles.errorMessage}>{errors.initial_price}</p>
+                </div>
+              ) : null}
       <label>
         <h3 className={style["h3-title"]}>Descuento: </h3>
       </label>
@@ -169,17 +301,22 @@ export default function EditFood() {
         type="number"
         name="discount"
         value={formData.discount}
-        disabled={!editableFields}
+        // disabled={!editableFields}
         onChange={handleChange}
       />
       <label>
+      {errors.discount ? (
+                <div className={styles.errorsContainer}>
+                  <p className={styles.errorMessage}>{errors.discount}</p>
+                </div>
+              ) : null}
         <h3 className={style["h3-title"]}>Estado: </h3>
       </label>
       <select
         type="text"
         name="status"
         value={formData.status}
-        disabled={!editableFields}
+        // disabled={!editableFields}
         onChange={handleSelect}
       >
         <option value={true}>Habilitado</option>
@@ -190,7 +327,7 @@ export default function EditFood() {
       </div>
       <div className={styles.divbtn}>
       <button className={styles.butedit} onClick={handleEdit}>Guardar</button>
-      <button className={styles.butedit} onClick={handleDelete}>Eliminar</button>
+      {/* <button className={styles.butedit} onClick={handleDelete}>Eliminar</button> */}
       <Link to="/admin">
         <button className={styles.butedit}>Cancelar</button>
       </Link>

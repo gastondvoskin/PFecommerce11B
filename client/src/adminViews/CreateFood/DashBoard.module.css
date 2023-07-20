@@ -3,53 +3,159 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 5px 5px 10px 5px;
-  padding-bottom: 10px;
-}
-.ButtonDB {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin: 30px;
-}
-.ButtonDB:hover {
-  transform: scale(0.95);
+  align-items: center;
+  margin: 60px 5px 10px 5px;
+  padding-bottom: 10px;
 }
 
 .SectionDB {
-  width: 600px;
-  height: auto;
+  height: 700px;
   border: 5px solid #426b1f;
   background-color: white;
   margin-bottom: 100px;
-}
-
-.InputNumberDB {
-  width: 50px;
-}
-
-.diets {
-  font-size: 10px;
-  margin-top: 10px;
   display: flex;
-  justify-content: space-between;
-  margin-left: 30px;
-}
-.diets input[type="checkbox"] {
-  transform: scale(1.5);
+  width: 1000px;
+  border-radius: 25px;
+
 }
 
-.diets-container {
+.inputsContainer {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 100%;
+}
+
+.attributesContainers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+}
+
+.attributesContainers h3 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.attributesContainers label h3 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.inputText {
+  width: 200px;
+  height: 45px;
+  background-color: #fff;
+  border: 3px solid transparent;
+  border-radius: 3px;
+  line-height: 45px;
+  transition: .1s ease all;
+  border: 1px solid darkgreen;
+}
+
+.inputText:focus{
+  border: 3px solid green;
+  outline: none;
+  box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.inputTextArea {
+  width: 200px;
+  height: 60px;
+  background-color: #fff;
+  border: 3px solid transparent;
+  border-radius: 3px;
+  line-height: 45px;
+  transition: .1s ease all;
+  border: 1px solid darkgreen;
+  resize: vertical; 
+  max-height: 100px;
+}
+
+.inputTextArea:focus{
+  border: 3px solid green;
+  outline: none;
+  box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.imageContainer {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.diets-container input[type="checkbox"] {
-  margin-left: 25px;
+.imageContainer label h3 {
+  font-size: 15px;
+  font-weight: 500;
 }
 
+.dietsContainer {
+  display: flex;
+  
+}
+
+.diets {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+  text-align: center;
+
+}
+
+.dietsValues span {
+  font-size: 13px;
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 340px;
+}
+
+.imageSelected {
+  margin-top: 10px;
+  width: 400px;
+  height: 250px;
+  border: 2px solid green;
+  border-radius: 26px;
+  transition: .1s ease all;
+}
+
+.imageSelected img {
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.imageNotSelected {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 400px;
+  border-radius: 25px;
+  background: rgb(6,156,26);
+  background: linear-gradient(90deg, rgba(6,156,26,1) 0%, rgba(13,60,7,0.9500000683867297) 100%);
+}
+
+.imageNotSelected p {
+  font-size: 80px;
+  color: white;
+}
 .title {
   text-align: center;
   margin-bottom: 5px;
@@ -57,44 +163,76 @@
   font-size: 35px;
 }
 
-.h3 {
-  margin-top: 10px;
-  margin-left: 30px;
-  font-size: 10px;
+.pricesContainers {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.image {
-  font-size: 15px;
-  margin-left: 30px;
+.pricesRow {
+  display: flex;
+}
+.pricesContainers label {
+  padding-right: 10px;
 }
 
-.h3-title {
-  margin-top: 10px;
-  margin-left: 10px;
-  font-size: 15px;
+.pricesContainers input {
+  width: 100px;
+  height: 35px;
+  background-color: #fff;
+  border: 3px solid transparent;
+  border-radius: 3px;
+  line-height: 45px;
+  transition: .1s ease all;
+  border: 1px solid darkgreen;
 }
 
+.pricesContainers input:focus {
+    border: 3px solid green;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+  
+}
 .errorMessage {
   color: red;
-  margin-top: 15px;
+  margin-top: 5px;
   font-size: 10px;
 }
 
-/* .logo {
-  width: 150px;
-  height: 150px;
-} */
-
-.inputTitle{
-  font-size: 28px;
-  width: 100%;
+.errorsContainer {
+  height: 20px;
 }
-.card {
-  width: 269px;
-  height: 366px;
-  border-radius: 24px;
-  border: 2px solid #e6e6e6;
-  background: #fafaf5;
-  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
-  padding: 10px;
+
+.ButtonCreate {
+  padding-bottom: 20px;
+  height: 100px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ButtonCreate button {
+  height: 80%;
+  width: 100%;
+  color: whitesmoke;
+  background-color: green;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+
+.ButtonDB {
+  width: 60px;
+}
+
+.ButtonDB button {
+  color: whitesmoke;
+  background-color: darkgreen;
+  border-radius: 15px;
+  text-transform: uppercase;
+  width: 60px;
 }

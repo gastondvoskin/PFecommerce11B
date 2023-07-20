@@ -5,7 +5,7 @@ import styles from './Products.module.css'; // Importa el archivo CSS
 import { Link } from 'react-router-dom';
 
 const Products = () => {
-  const allFoods = useSelector((state) => state.foodsReducer.allFoods);
+  const allFoods = useSelector((state) => state.foodsReducer.adminFoods);
   const [localFoods, setLocalFoods] = useState(allFoods);
   const [category, setCategory] = useState('todas');
 
@@ -40,22 +40,31 @@ const Products = () => {
   return (
     <div className={styles.productos}> {/* Aplica la clase CSS utilizando la variable styles */}
       <div>
-        <h1>Nuestras Viandas</h1>
+        <h2>Nuestras Viandas</h2>
         
       </div>
       <div className={styles.addFood}>
         <Link to={'/admin/create'}>
-          <button>Agregar Vianda</button>
+          <button className={styles.viewAllButton}>Agregar Vianda</button>
         </Link>
-        <select value={category} onChange={handlerChange}>
+        <select className={styles.viewAllButton} value={category} onChange={handlerChange}>
           <option value="todas">Todas</option>
           <option value="carnes">Carnes</option>
           <option value="pastas">Pastas</option>
           <option value="ensaladas">Ensaladas</option>
         </select>
       </div>
-      <div>
-        <ul>
+      <table className={styles.destable}>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio Final</th>
+            <th>Estado</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+          <tbody>
           {localFoods.length > 0 &&
             localFoods.map(e => (
               <ListProductsItem
@@ -68,8 +77,8 @@ const Products = () => {
                 setLocalFoods={setLocalFoods}
               />
             ))}
-        </ul>
-      </div>
+        </tbody>
+      </table>
     </div>
   );
 };

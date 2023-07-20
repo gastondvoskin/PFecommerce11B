@@ -4,13 +4,22 @@ import { getUserDetailAction } from "../../redux/userSlice";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import styles from "./MyProfile.module.css";
+import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
   const userDetail = useSelector((state) => state.usersReducer.userDetail);
   const [editableFields, setEditableFields] = useState(false);
   const { user, isAuthenticated } = useAuth0();
+  
+  useEffect (() =>{
+    dispatch (getUserDetailAction (email));
+}, [dispatch])
 
+  console.log("verifica 1", userDetail )
+  //console.log("verifica id", userDetail[0].id )
+  
   const [formData, setFormData] = useState({
     name: "",
     /* address: "" */
@@ -48,17 +57,31 @@ const MyProfile = () => {
       console.log("formData ", formData);
       const response = await axios.put(`/user/${email}`, formData);
       console.log("2");
-
+  
       console.log(response);
-      window.alert("Perfil editado correctamente");
+      Swal.fire({
+        title: "¡Éxito!",
+        text: "Perfil editado correctamente",
+        icon: "success",
+        confirmButtonText: "Continuar"
+      });
+       
     } catch (error) {
-      alert({ error: error.message });
+      Swal.fire({ 
+        title: 'Error',
+        text: "Error de Sistema",
+        icon: 'error',
+        confirmButtonText: 'Cerrar'
+      });
     }
   };
 
   return (
     <main className={styles.mainContainer}>
       <h1>Mi perfil</h1>
+      
+      <Link to="/userorder"> <button>Mi Orden</button> </Link> 
+
       <section>
         <h2>Mis datos</h2>
         <button type="button" onClick={handleCheck}>

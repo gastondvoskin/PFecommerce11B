@@ -1,4 +1,4 @@
- // reducer (foodsSlice.reducer is by now the only reducer)
+// reducer (foodsSlice.reducer is by now the only reducer)
 import { createSlice } from "@reduxjs/toolkit";
 import { hardcodedFoodsArray } from "../../hardcodedFoods";
 /*const items = [
@@ -9,18 +9,19 @@ import { hardcodedFoodsArray } from "../../hardcodedFoods";
 
 const initialState = {
   allFoods: [],
+  adminFoods: [],
   foodDetail: [],
-  filteredFoods:[],
-  orderItems:[],
-  activeFilteredFoods:false,
-  orderBy:'',
-  foodsCategory:'',
-  foodsDiet:'',
-  currentPage:1,
+  filteredFoods: [],
+  orderItems: [],
+  activeFilteredFoods: false,
+  orderBy: "",
+  foodsCategory: "todas",
+  foodsDiet: "",
+  currentPage: 1,
   diets: [
     "Sin TACC",
-    "Vegetariano",
-    "Vegano",
+    "Vegetariana",
+    "Vegana",
     "Sin Lactosa",
   ] /* TONO: why is there a diets property in redux? Cause don´t a diets' table*/,
   categories: [
@@ -35,6 +36,10 @@ export const foodsSlice = createSlice({
   name: "foods",
   initialState,
   reducers: {
+    getAdminFoods: (state, action) => {
+      const foods = action.payload;
+      state.adminFoods = foods;
+    },
     getAllFoods: (state, action) => {
       /* we can access getAllFoods through foodsSlice.actions.getAllFoods */
       // console.log(action.type);
@@ -47,56 +52,56 @@ export const foodsSlice = createSlice({
 
     getFoodsByName: (state, action) => {
       if (action.payload !== "") {
-        state.filteredFoods = action.payload
+        state.filteredFoods = action.payload;
       } else {
         state.allFoods;
       }
     },
 
-    orderFoods:(state,action) =>{
+    orderFoods: (state, action) => {
       const orderedFoods = action.payload;
-      state.filteredFoods = orderedFoods
+      state.filteredFoods = orderedFoods;
     },
 
-    activeFilteredFood:(state,action) =>{
+    activeFilteredFood: (state, action) => {
       const bolean = action.payload;
-      state.activeFilteredFoods = bolean
+      state.activeFilteredFoods = bolean;
     },
-    setOrder:(state,action) =>{
+    setOrder: (state, action) => {
       const order = action.payload;
-      state.orderBy = order
+      state.orderBy = order;
     },
-    setCurrentPage:(state,action) => {
-      const page = action.payload
-      state.currentPage = page
+    setCurrentPage: (state, action) => {
+      const page = action.payload;
+      state.currentPage = page;
     },
-    filterByCategory:(state,action) => {
-      const filteredByCategory = action.payload
-      state.filteredFoods = filteredByCategory
+    filterByCategory: (state, action) => {
+      const filteredByCategory = action.payload;
+      state.filteredFoods = filteredByCategory;
     },
-    filterByDiet:(state,action) => {
+    filterByDiet: (state, action) => {
       const filteredByDiet = action.payload;
-      state.filteredFoods = filteredByDiet
+      state.filteredFoods = filteredByDiet;
     },
-    setCategory:(state,action) => {
+    setCategory: (state, action) => {
       const category = action.payload;
-      state.foodsCategory = category
+      state.foodsCategory = category;
     },
-    setDiet:(state,action) => {
+    setDiet: (state, action) => {
       const diet = action.payload;
-      state.foodsDiet = diet
+      state.foodsDiet = diet;
     },
 
     postFoods: (state) => {
       state.allFoods;
     },
 
-    editFoods: (state)=>{
-      state.allFoods
+    editFoods: (state) => {
+      state.allFoods;
     },
 
-    deletFoods: (state)=>{
-      state.allFoods
+    deletFoods: (state) => {
+      state.allFoods;
     },
     // WIP
     // ORDER ITEMS
@@ -104,14 +109,26 @@ export const foodsSlice = createSlice({
       const newItem = action.payload;
       state.orderItems = [...state.orderItems, newItem];
     },
-    deleteItems: (state, action)=>{
+    deleteItems: (state, action) => {
       const deleteId = action.payload;
-      state.orderItems = state.orderItems.filter((it)=>it.id!==deleteId);
+      state.orderItems = state.orderItems.filter((it) => it.id !== deleteId);
+    },
+    putItems: (state, action) => {
+      const putId = action.payload.id;
+      const putQuantity = action.payload.quantity;
+      const putAmount = action.payload.amount;
+      state.orderItems = state.orderItems.map(it => {
+        if (it.id === putId) {
+          it.quantity = putQuantity;
+          it.amount = putAmount;
+        }
+      })
     }
   },
 });
 
 export const {
+  getAdminFoods,
   getAllFoods,
   getFoodsByName,
   activeFilteredFood,
@@ -125,9 +142,9 @@ export const {
   editFoods,
   deleteFoods,
   addItems,
-  deleteItems
+  deleteItems,
+  putItems,
 } = foodsSlice.actions;
-
 
 export default foodsSlice.reducer; /* it will be imported in the store */
 
