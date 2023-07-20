@@ -1,11 +1,19 @@
-.main {
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr 5fr; 
+  height: 100vh;
+  background-color: white;
+}
+
+.contentContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 20px;
     background: no-repeat;
-  }
+}
+
 .container {
     width: 62%;
     height: 100%;

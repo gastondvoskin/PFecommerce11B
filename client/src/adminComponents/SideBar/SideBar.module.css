@@ -1,52 +1,55 @@
 .sidebar {
-    background-color: var(--accentColor);
-    padding: 20px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    color: white;
-  }
-  
-  .option {
-    padding: 10px;
-    cursor: pointer;
-  }
-  .sep{
-    margin: 0px 4px 0px 0px;
-    color: white;
-  }
-  
-  .option:hover {
-    background-color: var(--accentColor2);
-  }
-  
-  .activeOption {
-    background-color: var(--accentColor2);
-  }
-  
-  /* Opcional: Si deseas que la altura se ajuste automáticamente al contenido */
-  .sidebar ul {
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-  }
-  .back-home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    background-color: #f0f0f0;
-    border-top: 1px solid #ccc;
-  }
-  
-  .link {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .bottom-option:hover {
-    background-color: #e0e0e0;
-  }
-  
+  background-color: var(--accentColor);
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  color: white;
+}
+
+.option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.clientOption {
+  margin-top: 40px;
+}
+
+.sep {
+  margin: 0px 4px 0px 0px;
+  color: white;
+}
+
+.option:hover {
+  background-color: var(--accentColor2);
+}
+
+.activeOption {
+  background-color: var(--accentColor2);
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+.back-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bottom-option:hover {
+  background-color: #e0e0e0;
+}

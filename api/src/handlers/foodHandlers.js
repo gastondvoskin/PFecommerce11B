@@ -33,12 +33,10 @@ const getAdminFoodHandler = async (req, res) => {
 const postFoodHandler = async (req, res) => {
     const { description, name, initial_price, discount, diets, category } = req.body;
     const image = req.file.buffer;
-    const final_price = initial_price * (1 - (discount / 100));
-    // console.log(image);
+    const final_price = Math.ceil(initial_price * (1 - (discount / 100)));
     // convierto en array 'diets' que llega como string
-    const diet=diets.split(',');
-    const total_score=0;
-    console.log(diet);
+    const diet = diets.split(',');
+    const total_score = 0;
     try {
         if (description && name && image && initial_price && discount && final_price && category && diet) {
             const newFood = await postFoodController(name, image, description, category, initial_price, discount, final_price, total_score, diet);
@@ -56,10 +54,8 @@ const putFoodHandler = async (req, res) => {
     try {
         const { id } = req.params;
         const { name, diet, description, initial_price, discount, status, category } = req.body;
-        const final_price = initial_price ? initial_price * (1 - (discount / 100)) : undefined;
+        const final_price = initial_price ? Math.ceil(initial_price * (1 - (discount / 100))) : undefined;
         const image = req.file ? req.file.buffer : null;
-        console.log(image);
-        console.log(req.body);
         await putFoodController(id, name, diet, description, image, initial_price, discount, final_price, status, category);
         res.status(200).send('Modificacion exitosa');
     } catch (error) {
@@ -79,4 +75,4 @@ const deleteFoodHandler = async (req, res) => {
 
 
 
-module.exports = { getFoodHandler, postFoodHandler, putFoodHandler, deleteFoodHandler,getAdminFoodHandler };
+module.exports = { getFoodHandler, postFoodHandler, putFoodHandler, deleteFoodHandler, getAdminFoodHandler };

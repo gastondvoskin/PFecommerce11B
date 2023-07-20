@@ -29,7 +29,6 @@ const AdminPanel = () => {
       case "dashboard":
         return <Dashboard />;
       case "products":
-        // return <Products />;
         return <Products />;
       case "users":
         return <Users />;

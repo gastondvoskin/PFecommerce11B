@@ -1,0 +1,24 @@
+.NavLink{
+    text-decoration: none;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5px;
+    background-color: var(--accentColor);
+    font-size: 15px;
+    border-radius: 10%;
+    color: white;
+    width: 120px;
+    height: 40px;
+    border: solid 3px white;
+    margin: 15px;
+}
+
+.button:hover {
+  background-color: var(--accentColor2);
+  transition: 0.5s;
+}
+

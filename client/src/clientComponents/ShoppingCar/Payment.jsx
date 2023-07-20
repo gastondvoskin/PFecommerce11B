@@ -74,9 +74,9 @@ const Payment = () => {
           })}
 
           <div className="total">
-            Total
+            {/* Total */}
             <span className="price" id="summary-total">
-              ${total}
+              {/* ${total} */}
             </span>
           </div>
           <div className="payment-details">

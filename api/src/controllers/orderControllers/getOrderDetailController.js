@@ -1,4 +1,4 @@
-const { Order, User, Food, Item } = require("../../db");
+const { Order, User, Food, Item,Review } = require("../../db");
 
 const getOrderDetailController = async (orderId) => {
   const order = await Order.findOne({
@@ -18,11 +18,15 @@ const getOrderDetailController = async (orderId) => {
             model: Food,
             attributes: ['name', 'image', 'final_price'],
           },
+          {
+            model:Review,
+            attributes:["comment","rating"]
+          }
         ],
       },
     ],
   });
-  console.log('controller:', order);
+  
   return order;
   
 };

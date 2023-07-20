@@ -3,32 +3,37 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 30px;
-  
+  margin-bottom: 20px;
 }
 
 .button {
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
-  width: 200px;
-  height: 200px;
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  border-radius: 100%;
   border: none;
+  width: 120px;
+  height: 120px;
+  margin: 5px;
+  border-radius: 15px;
 }
 
 .button:hover {
-  box-shadow: 0 0 25px var(--accentColor);
+  border: solid 4px var(--accentColor2);
+  transition: all 0.5s ease-out;
+}
+
+.categorySelected {
+  border: solid 4px var(--accentColor);
 }
 
 .text {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .image {
-  width: 130px;
-  height: 130px;
+  width: 80px;
+  height: 80px;
   border-radius: 100%;  
 } 

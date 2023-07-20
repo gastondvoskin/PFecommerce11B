@@ -1,0 +1,37 @@
+.bodys {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.container {
+  height: 100vh;
+  background-color: var(--accentColor);
+}
+
+.sidebar {
+  height: auto;
+  width: 100%;
+  padding: 0%;
+}
+
+.sidebar .row {
+  width: 100%;
+  height: 50px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar.row:hover {
+  cursor: pointer;
+  background-color: var(--accentColor2);
+}
+
+.links {
+  text-decoration: none;
+  color: white;
+}

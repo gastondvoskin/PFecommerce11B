@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className={styles.footer}>
       <span className={styles.text}>
-        Vianda express | Copyright @ 2023 | Todos los derechos reservados
+        Vianda Express | Copyright @ 2023 | Todos los derechos reservados
       </span>
     </footer>
   );

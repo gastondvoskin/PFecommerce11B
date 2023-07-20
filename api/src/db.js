@@ -27,6 +27,8 @@ Review.belongsTo(User);
 Food.hasMany(Review);
 Review.belongsTo(Food);
 
+Item.hasOne(Review);
+Review.hasOne(Item);
 
 User.belongsToMany(Food, { through: "Favorite" });
 Food.belongsToMany(User, { through: "Favorite" });

@@ -37,10 +37,10 @@ const putOrderController = async ({
       if (
         orderToBeModified &&
         !order_status &&
-        status &&
-        payment_status_detail &&
-        payment_id &&
-        payment_date
+        status
+        // payment_status_detail &&
+        // payment_id &&
+        // payment_date
       ) {
         await Order.update(
           { status, payment_status_detail, payment_id, payment_date },

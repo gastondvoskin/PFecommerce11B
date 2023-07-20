@@ -1,30 +1,39 @@
-.orderdiv{
-    padding: 5px 0px 5px 10px;
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr 5fr; 
+  height: 100vh; 
 }
-.destable{
-    border-collapse: collapse;
-    min-width: 1111px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .destable thead tr {
-    background-color: var(--accentColor2);
-    color: #ffffff; 
-    text-align: middle;
-    height: 40px;
-    font-size: 18px;
-  }
-  
-  .destable th .destable td {
-    padding: 12px 15px;
-  }
-  
-  .destable tbody tr {
-    border-bottom: 1px solid #dddddd; 
-    } 
-    .destable tbody tr:nth-of-type(even) { 
-        background-color: #f3f3f3; 
-    }
-    .destable tbody tr:last-of-type {
-        border-bottom: 2px solid #009879;
-  }
+
+.orderDiv {
+  width: 100%;
+  height: 100%;
+  padding: 5px 0px 5px 10px;
+  background-color: white;
+}
+.destable {
+  border-collapse: collapse;
+  min-width: 1111px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.destable thead tr {
+  background-color: var(--accentColor2);
+  color: #ffffff;
+  text-align: middle;
+  height: 40px;
+  font-size: 18px;
+}
+
+.destable th .destable td {
+  padding: 12px 15px;
+}
+
+.destable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.destable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.destable tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

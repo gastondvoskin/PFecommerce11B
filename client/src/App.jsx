@@ -6,7 +6,6 @@ import Nav from "./clientComponents/Nav/Nav.jsx";
 import Detail from "./clientViews/Detail/Detail.jsx";
 import Home from "./clientViews/Home/Home.jsx";
 import NotFound from "./clientViews/NotFound/NotFound.jsx";
-import MyProfile from "./clientViews/MyProfile/MyProfile.jsx";
 import Footer from "./clientComponents/Footer/Footer.jsx";
 import EditForm from "./adminViews/EditFood/EditFood";
 import AdminPanel from "./adminViews/AdminPanel/AdminPanel";
@@ -17,6 +16,8 @@ import PaymentStatus from "./clientViews/PaymentStatus/PaymentStatus";
 import OrderDetail from "./adminViews/OrderDetail/OrderDetail";
 import UserOrder from "./clientViews/UserOrder/UserOrder";
 import UserOrderDetail from "./clientViews/UserOrderDetail/UserOrderDetail";
+import MyProfile from "./clientViews/MyProfile/MyProfile.jsx";
+import MyFavorites from "./clientViews/MyFavorites/MyFavorites.jsx";
 
 function App() {
   const location = useLocation();
@@ -26,7 +27,7 @@ function App() {
   useEffect(() => {
     const searchUserType = async () => {
       try {
-        const response = await axios.get("/user", {
+        const response = await axios.get("/user", { 
           params: {
             type: "Admin",
           },
@@ -46,9 +47,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/viandas" element={<Viandas />} />
-        <Route path="/myprofile" element={<MyProfile />} />
-        <Route path="/userorder/detail/:id" element={<UserOrderDetail />} />
-        <Route path="/userorder" element={<UserOrder />} />
+        <Route path="/micuenta/misdatos" element={<MyProfile />} />
+        <Route path="/micuenta/misordenes" element={<UserOrder />} />
+        <Route path="/micuenta/misordenes/detalle/:id" element={<UserOrderDetail />} />
+        <Route path="/micuenta/misfavoritos" element={<MyFavorites />} />
+
         <Route path="/detail/:id" element={<Detail />} />
         <Route
           path="/admin/*"

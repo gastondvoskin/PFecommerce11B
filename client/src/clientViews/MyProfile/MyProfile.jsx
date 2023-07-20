@@ -4,150 +4,131 @@ import { getUserDetailAction } from "../../redux/userSlice";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import styles from "./MyProfile.module.css";
-import Swal from 'sweetalert2';
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import "animate.css";
+import logo from "../../assets/logo/LogoViandaExpress.jpeg";
+import SidebarUser from "../../clientComponents/SidebarUser/SidebarUser";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
-  const userDetail = useSelector((state) => state.usersReducer.userDetail);
-  const [editableFields, setEditableFields] = useState(false);
+  const userDetailArray = useSelector((state) => state.usersReducer.userDetail);
+  const [editableField, setEditableField] = useState(false);
   const { user, isAuthenticated } = useAuth0();
-  
-  useEffect (() =>{
-    dispatch (getUserDetailAction (email));
-}, [dispatch])
 
-  console.log("verifica 1", userDetail )
-  //console.log("verifica id", userDetail[0].id )
-  
-  const [formData, setFormData] = useState({
-    name: "",
-    /* address: "" */
-  });
-
-  /* we get the email from Auth0 */
-  const email = user?.email;
-
-  /* we get the info of the user from the db */
   useEffect(() => {
-    if (!userDetail) {
-      dispatch(getUserDetailAction(email));
+    if (!userDetailArray.length) { /* userDetailArray is an array because the back does a findAll instead of a findOne */
+      dispatch(getUserDetailAction(user?.email));
     }
-  }, [email, dispatch]);
+  }, [user, dispatch]);
 
-  /* we handle wether the form is editable or not */
-  const handleCheck = (event) => {
-    event.preventDefault();
-    setEditableFields(!editableFields);
+  const [address, setAddress] = useState(userDetailArray[0]?.address);
+
+
+  const handleEdit = () => {
+    setEditableField(!editableField);
   };
 
-  /* we change the value with each change on the form */
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setAddress(e.target.value)
   };
 
-  /* submit does a PUT request */
   const handleSave = async () => {
     try {
-      console.log("1");
-      console.log("formData ", formData);
-      const response = await axios.put(`/user/${email}`, formData);
-      console.log("2");
-  
-      console.log(response);
+      const response = await axios.put(`/user/${user.email}`, {address: address});
+      console.log('response: ', response);
+      dispatch(getUserDetailAction(user.email));
+      handleEdit();
+
       Swal.fire({
         title: "¡Éxito!",
         text: "Perfil editado correctamente",
         icon: "success",
-        confirmButtonText: "Continuar"
+        confirmButtonText: "Continuar",
+        footer: "Vianda Express",
+        imageUrl: logo,
+        timer: 4000,
+        timerProgressBar: true,
+        confirmButtonColor: "var(--accentColor)",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
       });
-       
     } catch (error) {
-      Swal.fire({ 
-        title: 'Error',
+      window.alert({error: error.message})
+      Swal.fire({
+        title: "Error",
         text: "Error de Sistema",
-        icon: 'error',
-        confirmButtonText: 'Cerrar'
+        icon: "error",
+        confirmButtonText: "Cerrar",
+        footer: "Vianda Express",
+        imageUrl: logo,
+        timer: 4000,
+        timerProgressBar: true,
+        confirmButtonColor: "var(--accentColor)",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
       });
     }
   };
 
+  /* RETURN */
   return (
     <main className={styles.mainContainer}>
-      <h1>Mi perfil</h1>
-      
-      <Link to="/userorder"> <button>Mi Orden</button> </Link> 
+      <SidebarUser />
+      <div className={styles.contentContainer}>
+        <h1>Mis datos</h1>
+        <section>
+          <div className={styles.form}>
+            <div className={styles.rowContainer}>
+              <label htmlFor="name">Nombre:</label>
+              <p name="email">{user?.name}</p>
+            </div>
+            {/* email */}
+            <div className={styles.rowContainer}>
+              <label htmlFor="name">Email de contacto:</label>
+              <p name="email">{user?.email}</p>
+            </div>
 
-      <section>
-        <h2>Mis datos</h2>
-        <button type="button" onClick={handleCheck}>
-          HABILITAR EDICIÓN
-        </button>
-        {/* form */}
+            <div className={styles.rowContainer}>
+              <img src={user?.picture} alt="Foto de perfil" />
+            </div>
 
-        <div className={styles.form}>
-          {/* email */}
-          <div className={styles.rowContainer}>
-            <label htmlFor="name">Email (no puede ser modificado):</label>
-            <input
-              className={styles.input}
-              type="text"
-              name="email"
-              value={user?.email}
-              disabled={true}
-              onChange={handleChange}
-              placeholder={userDetail.name}
-            />
+            {/* address */}
+            <div className={styles.rowContainer}>
+              <label htmlFor="address">Domicilio de entrega:</label>
+              <br />
+              <input
+                className={styles.input}
+                type="text"
+                name="address"
+                value={address}
+                disabled={!editableField}
+                onChange={handleChange}
+                placeholder={userDetailArray[0]?.address}
+              />
+            </div>
+
+            <button className={styles.editButton} type="button" onClick={handleEdit}>
+              EDITAR DOMICILIO
+            </button>
+
+            <button
+              className={styles.saveButton}
+              type="button"
+              onClick={handleSave}
+            >
+              GUARDAR
+            </button>
           </div>
-
-          {/* name */}
-          <div className={styles.rowContainer}>
-            <label htmlFor="name">Nombre:</label>
-            <input
-              className={styles.input}
-              type="text"
-              name="name"
-              value={formData.name}
-              disabled={!editableFields}
-              onChange={handleChange}
-              placeholder={userDetail.name}
-            />
-          </div>
-
-          {/* address */}
-          {/* <div className={styles.rowContainer}>
-            <label htmlFor="address">Domicilio:</label>
-            <input
-              className={styles.input}
-              type="text"
-              name="address"
-              value={formData.address}
-              disabled={!editableFields}
-              onChange={handleChange}
-              placeholder={userDetail.address}
-            />
-          </div> */}
-
-          <button type="button" onClick={handleSave}>
-            Guardar
-          </button>
-        </div>
-        <hr></hr>
-      </section>
-      {/* <section>
-        <h2>Mis favoritos</h2>
-        <p>Próximamente...</p>
-        <hr></hr>
-      </section> */}
-      {/* <section>
-        <h2>Historial de compras</h2>
-        <p>Próximamente...</p>
-        <hr></hr>
-      </section> */}
+        </section>
+      </div>
     </main>
   );
 };

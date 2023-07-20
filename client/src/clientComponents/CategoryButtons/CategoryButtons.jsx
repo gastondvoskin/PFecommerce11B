@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   activeFilteredFoodsAction,
@@ -15,6 +15,7 @@ import saladImage from "../../assets/categories/salad.jpeg";
 import varietyImage from "../../assets/carousel/original3.jpg";
 
 const CategoryButtons = () => {
+  const [ categorySelected, setCategorySelected ] = useState("Todas");
   const allFoods = useSelector((state) => state.foodsReducer.allFoods);
   const dispatch = useDispatch();
 
@@ -48,6 +49,8 @@ const CategoryButtons = () => {
       const button = e.target.closest("button");
       value = button.value;
     }
+
+    setCategorySelected(value);
     const filteredFoods = handlerFilterCategory(value);
 
     dispatch(filterByCategoryAction(filteredFoods));
@@ -58,11 +61,12 @@ const CategoryButtons = () => {
     dispatch(setDietAction(""));
   };
 
+
   /* RETURN */
   return (
     <div className={styles.mainContainer}>
       <button
-        className={styles.button}
+        className={`${styles.button} ${categorySelected === "Todas" && styles.categorySelected}`}
         onClick={(e) => handleClick(e)}
         value="Todas"
       >
@@ -71,7 +75,7 @@ const CategoryButtons = () => {
       </button>
 
       <button
-        className={styles.button}
+        className={`${styles.button} ${categorySelected === "Pastas" && styles.categorySelected}`}
         onClick={(e) => handleClick(e)}
         value="Pastas"
       >
@@ -80,7 +84,7 @@ const CategoryButtons = () => {
       </button>
 
       <button
-        className={styles.button}
+        className={`${styles.button} ${categorySelected === "Carnes" && styles.categorySelected}`}
         onClick={(e) => handleClick(e)}
         value="Carnes"
       >
@@ -89,7 +93,7 @@ const CategoryButtons = () => {
       </button>
 
       <button
-        className={styles.button}
+        className={`${styles.button} ${categorySelected === "Ensaladas" && styles.categorySelected}`}
         onClick={(e) => handleClick(e)}
         value="Ensaladas"
       >

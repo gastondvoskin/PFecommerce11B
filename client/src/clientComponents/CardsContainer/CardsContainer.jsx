@@ -1,24 +1,14 @@
 import Card from "../Card/Card";
-import style from "./CardsContainer.module.css";
+import styles from "./CardsContainer.module.css";
 
-export default function CardsContainer({ currentFoods, allItems, orderId }) {
+export default function CardsContainer({ currentFoods, allItems, orderUser }) {
   return (
-    <div className={style.cardsContainer}>
+    <div className={styles.cardsContainer}>
       {currentFoods.length === 0 ? (
         <p>No se encontraron resultados.</p>
       ) : (
         currentFoods.map(
-          ({
-            id,
-            name,
-            image,
-            initial_price,
-            final_price,
-            category,
-            diets,
-            discount,
-            status,
-          }) => (
+          ({id, name, image, initial_price, final_price, category, diets, discount, status, total_score}) => (
             <Card
               key={id}
               id={id}
@@ -31,11 +21,12 @@ export default function CardsContainer({ currentFoods, allItems, orderId }) {
               category={category}
               diets={diets}
               allItems={allItems}
-              orderId={orderId}
+              orderUser={orderUser}
+              total_score={total_score}
             />
           )
         )
       )}
     </div>
   );
-};
+}

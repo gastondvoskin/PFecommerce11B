@@ -37,13 +37,8 @@ const postUserHandler = async (req, res) => {
 
 const putUserHandler = async (req, res) => {
     try {
-        console.log('req.body: ', req.body);
-        
         const { email } = req.params;
-        console.log('email: ', email);
-
         const { name, /* email,  */ type, status, address } = req.body;
-        console.log('status: ', status);
         await putUserController(/* id,  */name, email, type, status, address);
         res.status(200).send('Modificación exitosa');
     } catch (error) {

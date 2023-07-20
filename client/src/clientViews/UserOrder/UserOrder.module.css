@@ -1,38 +1,44 @@
 .divuser {
-    padding: 10px;
-  }
+  display: grid;
+  grid-template-columns: 1fr 5fr; 
+  background-color: white;
+}
+
+.content {
+  width: 100%;
+}
+
+.destable {
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   
-  .destable {
-    border-collapse: collapse;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
+}
+
+.destable thead tr {
+  background-color: var(--accentColor);
+  color: #ffffff;
+  text-align: center;
+}
+
+.destable th {
+  padding: 12px 15px;
+}
+
+.destable td {
+  padding: 12px 15px;
+  background-color: var(--accentColor2);
+  border-right: 1px solid black;
   
-  .destable thead tr {
-    background-color: var(--accentColor);
-    color: #ffffff;
-    text-align: center;
-  }
-  
-  .destable th {
-    padding: 12px 15px;
-    
-  }
-  .destable td {
-    padding: 12px 15px;
-    background-color: wheat;
-    border-right: 1px solid black;
-  }
-  
-  .destable tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  .destable tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .destable tbody tr:last-of-type {
-    border-bottom: 2px solid var(--accentColor);
-  }
-  
+}
+
+.destable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.destable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.destable tbody tr:last-of-type {
+  border-bottom: 2px solid var(--accentColor);
+}

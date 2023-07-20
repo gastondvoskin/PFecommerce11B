@@ -6,6 +6,8 @@ import styles from "./ListOrders.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListOl } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import 'animate.css';
+import logo from "../../assets/logo/LogoViandaExpress.jpeg"
 
 const ListOrders = ({id, User_name, total_price, createdAt, status, order_status}) => {
   
@@ -40,11 +42,30 @@ const ListOrders = ({id, User_name, total_price, createdAt, status, order_status
           showCancelButton: true,
           confirmButtonText: 'Sí',
           cancelButtonText: 'Cancelar',
+          footer: 'Vianda Express',
+          imageUrl: logo,
+          confirmButtonColor: 'var(--accentColor)',
+          showClass: {
+          popup: 'animate__animated animate__fadeInDown'},
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
         });
   
         if (result.isConfirmed) {
           dispatch(updateOrderStatusAction(orderId, order_status));
-          Swal.fire('Estado actualizado', `El estado se ha establecido como ${order_status}.`, 'success');
+          Swal.fire({
+            title: 'Estado actualizado',
+            text: `El estado se ha establecido como ${order_status}.`,
+            icon:'success',
+            confirmButtonColor: 'var(--accentColor)',
+            timer: 3000,
+            timerProgressBar: true,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'},
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp',}
+          });
         }else{
           setSelectedStatus(previousStatus);
         }

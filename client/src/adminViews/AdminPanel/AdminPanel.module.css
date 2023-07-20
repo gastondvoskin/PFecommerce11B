@@ -1,11 +1,9 @@
 .adminPanel {
-    display: grid;
-    grid-template-columns: 1fr 5fr; /* 1/6 para la sidebar, 5/6 para el contenido */
-    background-color: blue;
-    height: 100vh; /* Ajustar al 100% de la altura de la ventana */
-  }
-  
-  .adminContent {
-    background-color:  #e6e6e6;
-  }
-  
+  display: grid;
+  grid-template-columns: 1fr 5fr; 
+  height: 100vh; 
+}
+
+.adminContent {
+  background-color: white;
+}

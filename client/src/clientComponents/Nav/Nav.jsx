@@ -44,7 +44,7 @@ function Nav() {
                 isActive ? styles.activeLink : styles.normalLink
               }
             >
-              HOME
+              INICIO
             </NavLink>
           </li>
           <li className={styles.navli}>
@@ -55,6 +55,16 @@ function Nav() {
               }
             >
               VIANDAS
+            </NavLink>
+          </li>
+          <li className={styles.navli}>
+            <NavLink
+              to="/shoppingcart"
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.normalLink
+              }
+            >
+              <FontAwesomeIcon icon={faCartShopping} /> PAGAR
             </NavLink>
           </li>
           {isAdmin && (
@@ -70,16 +80,6 @@ function Nav() {
             </li>
           )}
           <li className={styles.navli}>
-            <NavLink
-              to="/shoppingcart"
-              className={({ isActive }) =>
-                isActive ? styles.activeLink : styles.normalLink
-              }
-            >
-              <FontAwesomeIcon icon={faCartShopping} /> PAGAR
-            </NavLink>
-          </li>
-          <li className={styles.navli}>
             <div
               className={styles.userContainer}
               onMouseEnter={() => setDisplayProfileOptions(true)}
@@ -91,7 +91,7 @@ function Nav() {
               {displayProfileOptions && isAuthenticated && (
                 <div className={styles.options}>
                   <LogoutButton />
-                  <NavLink className={styles.option} to="/myprofile">
+                  <NavLink className={styles.option} to="/micuenta/misdatos">
                     MI CUENTA
                   </NavLink>
                 </div>

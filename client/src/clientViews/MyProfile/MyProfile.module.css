@@ -1,7 +1,13 @@
 .mainContainer {
+    display: grid;
+    grid-template-columns: 1fr 5fr; 
+    background-color: white;
+}
+
+.contentContainer{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin: 30px;
 }
 
 .form {
@@ -16,4 +22,20 @@
 
 .input {
     width: 300px;
+}
+
+.saveButton{
+    width: fit-content;
+    background-color: var(--accentColor);
+    padding: 5px;
+    color: white;
+    margin: 10px;
+}
+
+.editButton {
+    width: fit-content;
+    background-color: var(--accentColor);
+    padding: 5px;
+    color: white;
+    margin: 10px;
 }

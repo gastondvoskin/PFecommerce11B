@@ -12,6 +12,12 @@ import {
 } from "../../redux/shopingCartSlice.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
+import 'animate.css';
+import logo from "../../assets/logo/LogoViandaExpress.jpeg"
+import AddButton from "../../clientComponents/AddButton/AddButton.jsx";
+import GoBackHome from "../../clientComponents/GoBackHome/GoBackHome.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 export default function Detail() {
   const { id } = useParams();
@@ -21,21 +27,16 @@ export default function Detail() {
     (state) => state.shopingCartReducer.pendingOrder
   ); //
   const allItems = useSelector((state) => state.shopingCartReducer.itemsOrder); //
-  console.log("Detail All: ", allItems);
-  // const allItems = useSelector((state) => state.foodsReducer.orderItems);
+
   const dispatch = useDispatch();
 
   const allFoods = useSelector((state) => state.foodsReducer.allFoods);
   const [quantity, setQuantity] = useState(1);
 
-  /* The useEffect implementation will change once we have a deployed DB */
   useEffect(() => {
-    // console.log("antes del if");
     if (!allFoods.length) {
-      // console.log("if");
       axios.get("/api").then(() => dispatch(getFoods()));
     } else {
-      // console.log("else");
       dispatch(getFoods());
     }
   }, [dispatch]);
@@ -54,11 +55,22 @@ export default function Detail() {
   const handleClick = (e) => {
     if (!isAuthenticated) {
       //alert('¡Cuidado! Logueate antes de agregar productos a tu carrito de compras. ¡Gracias!')
-      Swal.fire(
-        "¡Cuidado!",
-        "Logueate antes de agregar productos a tu carrito de compras.",
-        "error"
-      );
+      Swal.fire({ 
+        title: "¡Cuidado!",
+        text: "Logueate antes de agregar productos a tu carrito de compras. ¡Gracias!",
+        icon: "error",
+        footer: 'Vianda Express',
+	      imageUrl: logo,
+        timer: 4000,
+        timerProgressBar: true,
+        confirmButtonColor: 'var(--accentColor)',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      });
     } else {
       if (isItem) {
         setIsItem(false);
@@ -159,9 +171,7 @@ export default function Detail() {
               src={foodDetail?.image}
               alt="img not found"
             />
-            <p className={styles.description}>
-              Descripción: {foodDetail?.description}
-            </p>
+            <p className={styles.description}>{foodDetail?.description}</p>
           </div>
           <div className={styles.container2}>
             <h2 className={styles.caract}>Características Principales</h2>
@@ -182,15 +192,14 @@ export default function Detail() {
               )}
             </p>
 
-            {foodDetail?.status ? (
-              <p className={styles.status}>Estado: disponible</p>
-            ) : (
+            {!foodDetail?.status && (
               <p className={styles.status}>Estado: no disponible</p>
             )}
 
             {foodDetail?.total_score > 4 && (
               <p className={styles.popular}>
-                Ésta es una de nuestras comidas más elegidas por los usuarios!
+                ⭐️ Mejor rankeado! Ésta es una de las viandas con mayor
+                valoración por parte de los usuarios.
               </p>
             )}
             {isItem ? (
@@ -202,9 +211,17 @@ export default function Detail() {
                 onChange={updateQuantity}
               />
             ) : null}
-            <button className={styles.butagregar} onClick={handleClick}>
-              {isItem ? "Agregado" : "Agregar"}
+            <button className={styles.addButton} onClick={handleClick}>
+              {isItem ? (
+                "Agregado"
+              ) : (
+                <p>
+                  <FontAwesomeIcon icon={faCartShopping} /> Agregar
+                </p>
+              )}
             </button>
+
+            <GoBackHome />
           </div>
         </div>
       )}

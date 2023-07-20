@@ -39,7 +39,6 @@ const paymentDataHandler = async (req, res) => {
 
     res.status(200).send("hola");
   } catch (error) {
-    console.log(error);
     res.status(400).send(error);
   }
 };

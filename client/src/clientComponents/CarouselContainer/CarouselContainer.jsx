@@ -18,7 +18,6 @@ import image3 from "../../assets/carousel/3.png";
       imageAlt: "Variadadas",
       imageText: "Viandas para toda la familia",
     },
-
     {
       imageSource: image2,
       imageAlt: "Saludables",
@@ -42,9 +41,6 @@ import image3 from "../../assets/carousel/3.png";
                 src={slide.imageSource}
                 alt={slide.imageAlt}
               />
-              {/* <Carousel.Caption>
-                <div className={styles.textContainer}>{slide.imageText}</div>
-              </Carousel.Caption> */}
             </Carousel.Item>
           );
         })}
@@ -52,40 +48,3 @@ import image3 from "../../assets/carousel/3.png";
     </div>
   );
 }
-
-{
-  /* <Carousel activeIndex={index} onSelect={handleSelect} interval="9000">
-  <Carousel.Item>
-    <img src="../../src/assets/carousel/variety.jpg" alt="Variadadas" />
-    <Carousel.Caption>
-      <div className={styles.CarouselText}>Viandas para toda la familia</div>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img src="../../src/assets/carousel/healthy.jpeg" alt="Saludables" />
-
-    <Carousel.Caption>
-      <div className={styles.CarouselText}>Saludables y nutritivas</div>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img src="../../src/assets/carousel/withLove.jpeg" alt="Caseras" />
-
-    <Carousel.Caption>
-      <div className={styles.CarouselText}>Caseras y con amor</div>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>;
- */
-}
-
-// {
-//   imageSource: "../../src/assets/carousel/healthy.jpeg",
-//   imageAlt: "Saludables",
-//   imageText: "Saludables y nutritivas",
-// },
-// {
-//   imageSource: "../../src/assets/carousel/withLove.jpeg",
-//   imageAlt: "Caseras",
-//   imageText: "Caseras y con amor",
-// },

@@ -7,29 +7,17 @@
   max-width: 1200px;
 }
 
-.filtros {
-  width: 100%;
-  max-width: 450px;
-  height: 100px;
+.categoriesAndFiltersAndOrder {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-.filtros2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  margin-top: 10px;
-}
-
-.asereje {
+.filters {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-color: black;
+  margin-left: 30px;
 }
 
 .notFoundMessage {

@@ -68,7 +68,6 @@ const FilterDietsOptions = () => {
   };
 
   const handlerSelect = (e) => {
-    console.log("hola");
     const { value } = e.target;
     const filters = handlerDietFilter(value);
     dispatch(filterByDietAction(filters));

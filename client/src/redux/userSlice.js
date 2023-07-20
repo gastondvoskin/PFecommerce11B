@@ -4,16 +4,12 @@ import axios from "axios";
 export const userSlice = createSlice({
   name: "users",
   initialState: {
-    allUsers: [],
     userDetail: {},
     userOrder: [],
     userOrderDetail: null,
     userFavorites: [],
   },
   reducers: {
-    getAllUsersCase: (state, action) => {
-      state.allUsers = action.payload;
-    },
     getUserByNameCase: (state, action) => {
       state.userDetail = action.payload;
     },
@@ -43,19 +39,11 @@ export const {
 
 export default userSlice.reducer;
 
-export const getAllUsersAction = () => async (dispatch) => {
-  try {
-    const allUsers = await axios.get("/user");
-    const usersData = allUsers.data;
-    dispatch(getAllUsersCase(usersData));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const getUserDetailAction = (email) => async (dispatch) => {
   try {
+    console.log('aquí')
     const userById = await axios.get("/user?email=" + email);
+    console.log('userById: ', userById)
     const userData = userById.data;
     dispatch(getUserByNameCase(userData));
   } catch (error) {
@@ -96,16 +84,17 @@ export const getUserFavoritesAction = (email) => async (dispatch) => {
   }
 };
 
-export const postUserReviewAction = (foodId, userId, comment, rating) => async (dispatch) => {
+export const postUserReviewAction = (foodId, userId, comment, rating, itemId) => async (dispatch) => {
   try {
     const newReview = {
       foodId,
       userId,
       comment,
       rating,
+      itemId
     };
 
-    const response = await axios.post("http://localhost:3001/review", newReview);
+    const response = await axios.post("/review", newReview);
     const createdReview = response.data;
     dispatch(postUserReviewCase(createdReview));
   } catch (error) {

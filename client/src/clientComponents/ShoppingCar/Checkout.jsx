@@ -31,7 +31,6 @@ const Checkout = ({ onClick }) => {
     setOrderData,
     total,
   } = React.useContext(Context);
-  console.log("Checkout: ", orderData);
 
   const shoppingCartClass = classnames("shopping-cart dark", {
     "shopping-cart--hidden": !isVisible,
@@ -119,7 +118,7 @@ const Checkout = ({ onClick }) => {
     e.preventDefault();
     const name = e.target.name;
     const item = orderData.filter((it) => it.Food.name === name)[0];
-    setOrderData(orderData.filter(it=>it.id!==item.id))
+    setOrderData(orderData.filter((it) => it.id !== item.id));
     // // console.log(item.id);
     // // const toActual = orderData.Items.filter((it) => it.id !== item.id);
     // // const actual = {

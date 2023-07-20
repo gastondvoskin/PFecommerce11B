@@ -5,51 +5,70 @@ export const adminSlice = createSlice({
     name: "orders",
     initialState: {
         allOrders: [],
-        bestSellers:[],
+        bestSellers: [],
         orderDetail: null,
-        sidebarOption:'dashboard',
-        quantityOfBestSellers:3,
+        sidebarOption: 'dashboard',
+        quantityOfBestSellers: 3,
+        reviews: [],
+        users: [],
+        renderFoods: [],
+        categoryBy: '',
+        searched: '',
     },
     reducers: {
         getAllOrdersCase: (state, action) => {
             state.allOrders = action.payload
         },
-
-        getBestSellersCase:(state, action) => {
+        setCategoryByCase: (state, action) => {
+            state.categoryBy = action.payload
+        },
+        setRenderFoodsCase: (state, action) => {
+            state.renderFoods = action.payload
+        },
+        getBestSellersCase: (state, action) => {
             state.bestSellers = action.payload
         },
-        setSidebarOption:(state,action) =>{
+        setSidebarOption: (state, action) => {
             state.sidebarOption = action.payload
         },
-        getOrderDetailCase: (state,action) =>{
+        getOrderDetailCase: (state, action) => {
             state.orderDetail = action.payload
         },
-        cleanOrderDetailCase: (state) =>{
+        cleanOrderDetailCase: (state) => {
             state.orderDetail = null
         },
-        setQuantityCase:(state,action) =>{
+        setQuantityCase: (state, action) => {
             state.quantityOfBestSellers = action.payload
         },
-        updateOrderStatusCase: (state, action)=>{
+        updateOrderStatusCase: (state, action) => {
             const { orderId, order_status } = action.payload;
-            const order = state.allOrders.find((order)=>order.id === orderId);
-            if(order){
+            const order = state.allOrders.find((order) => order.id === orderId);
+            if (order) {
                 order.state = order_status;
             }
+        },
+        getAllReviewsCase: (state, action) => {
+            state.reviews = action.payload
+        },
+        getAllUsersCase: (state, action) => {
+            state.users = action.payload
+        },
+
+        setSearchedCase: (state, action) => {
+            state.searched = action.payload
         }
     }
 })
 
-export const { getAllOrdersCase,setSidebarOption, getOrderDetailCase, cleanOrderDetailCase, getBestSellersCase,setQuantityCase, updateOrderStatusCase } = adminSlice.actions;
+export const { getAllOrdersCase, setSidebarOption, getOrderDetailCase, cleanOrderDetailCase, getBestSellersCase, setQuantityCase, updateOrderStatusCase, getAllReviewsCase, getAllUsersCase, setSearchedCase, setCategoryByCase, setRenderFoodsCase } = adminSlice.actions;
 
 export default adminSlice.reducer;
 
 export const getAllOrdersAction = () => async (dispatch) => {
-    console.log('dispachandop');
+
     try {
         const allOrders = await axios.get('/order')
             .then(r => r.data)
-            console.log(allOrders);
         dispatch(getAllOrdersCase(allOrders))
     } catch (error) {
         console.log(error);
@@ -82,13 +101,32 @@ export const cleanOrderDetailAction = () => (dispatch) => {
 
 export const updateOrderStatusAction = (orderId, order_status) => async (dispatch) => {
     try {
-        const data = {orderId: orderId, order_status: order_status};
-      const response = await axios.put('/order', data, {
-        headers: { 'Content-Type': 'application/json' },
-      });
-      dispatch(updateOrderStatusCase({ orderId, order_status }));
+        const data = { orderId: orderId, order_status: order_status };
+        const response = await axios.put('/order', data, {
+            headers: { 'Content-Type': 'application/json' },
+        });
+        dispatch(updateOrderStatusCase({ orderId, order_status }));
     } catch (error) {
         console.log(error);
     }
-  };
+};
 
+export const getAllReviewsAction = () => async (dispatch) => {
+    try {
+        const { data } = await axios.get("/review")
+        dispatch(getAllReviewsCase(data))
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getAllUsersAction = () => async (dispatch) => {
+    try {
+        console.log('en el action');
+        const { data } = await axios.get("/user")
+        console.log(data);
+        dispatch(getAllUsersCase(data))
+    } catch (error) {
+        console.log(error);
+    }
+}
