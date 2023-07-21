@@ -28,24 +28,49 @@ export default function AddButton({
   const orderUser = useSelector(
     (state) => state.shopingCartReducer.pendingOrder
   );
+
   useEffect(() => {
-    if (isAuthenticated && !allItems.length) {
-      const body = {
-        email: user?.email,
-      };
-      axios
-        .post("/order", body)
-        .then((r) => r.data)
-        .then((data) => {
+    const dataToDb = async () => {
+      if (isAuthenticated && !allItems.length) {
+        const body = {
+          email: user?.email,
+        };
+
+        try {
+          const response = await axios.post("/order", body);
+          const data = response.data;
           dispatch(setUserOrderCase(data));
-          if (data.Items?.length) dispatch(getItems(data.Items));
-        })
-        .catch((error) => console.log(error));
-      /* console.log("userOrder:", userOrder); */
-      // dispatch(setUserOrderCase(userOrder));
-      // if (userOrder.Items?.length) dispatch(getItems(userOrder.Items));
-    }
+          if (data.Items?.length) {
+            dispatch(getItems(data.Items));
+          }
+          console.log("DB Order");
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+
+    dataToDb();
   }, [isAuthenticated, user, allItems, dispatch]);
+  
+  // useEffect(() => {
+  //   if (isAuthenticated && !allItems.length) {
+  //     const body = {
+  //       email: user?.email,
+  //     };
+  //     axios
+  //       .post("/order", body)
+  //       .then((r) => r.data)
+  //       .then((data) => {
+  //         dispatch(setUserOrderCase(data));
+  //         if (data.Items?.length) dispatch(getItems(data.Items));
+  //       })
+  //       .catch((error) => console.log(error));
+  //     /* console.log("userOrder:", userOrder); */
+  //     // dispatch(setUserOrderCase(userOrder));
+  //     // if (userOrder.Items?.length) dispatch(getItems(userOrder.Items));
+  //   }
+  // }, [isAuthenticated, user, allItems, dispatch]);
   const handleClick = (e) => {
     if (!isAuthenticated) {
       Swal.fire({

@@ -26,29 +26,57 @@ const Home = () => {
   const { isLoading, user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      const body = {
-        name: user?.name,
-        email: user?.email,
-      };
-      axios
-        .post("/user", body)
-        .then(async () => {
-          if (isAuthenticated && !allItems.length) {
-            await axios
-              .post("/order", { email: body.email })
-              .then((r) => r.data)
-              .then((data) => {
-                dispatch(setUserOrderCase(data));
-                if (data.Items?.length) dispatch(getItems(data.Items));
-                console.log("DB Order");
-              });
+    const dataToDb = async () => {
+      if (isAuthenticated) {
+        const body = {
+          name: user?.name,
+          email: user?.email,
+        };
+
+        try {
+          await axios.post("/user", body);
+
+          if (!allItems.length) {
+            const response = await axios.post("/order", { email: body.email });
+            const data = response.data;
+
+            dispatch(setUserOrderCase(data));
+            if (data.Items?.length) dispatch(getItems(data.Items));
+            console.log("DB Order");
           }
-          /* console.log("Usuario enviado a DB"); */
-        })
-        .catch((error) => console.log(error));
-    }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+
+    dataToDb();
   }, [isAuthenticated, user, allItems, dispatch]);
+
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     const body = {
+  //       name: user?.name,
+  //       email: user?.email,
+  //     };
+  //     axios
+  //       .post("/user", body)
+  //       .then(async () => {
+  //         if (isAuthenticated && !allItems.length) {
+  //           await axios
+  //             .post("/order", { email: body.email })
+  //             .then((r) => r.data)
+  //             .then((data) => {
+  //               dispatch(setUserOrderCase(data));
+  //               if (data.Items?.length) dispatch(getItems(data.Items));
+  //               console.log("DB Order");
+  //             });
+  //         }
+  //         /* console.log("Usuario enviado a DB"); */
+  //       })
+  //       .catch((error) => console.log(error));
+  //   }
+  // }, [isAuthenticated, user, allItems, dispatch]);
 
   useEffect(() => {
     if (!allFoods.length) {
@@ -68,7 +96,9 @@ const Home = () => {
 
   return (
     <div className={styles.mainContainer}>
-      {!user?.given_name ? "" : (
+      {!user?.given_name ? (
+        ""
+      ) : (
         <div className={styles.greetingContainer}>
           <h1>{`Hola, ${user.given_name}!`}</h1>
         </div>

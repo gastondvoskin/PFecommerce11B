@@ -36,21 +36,45 @@ const Viandas = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (isAuthenticated && !allItems.length) {
-      const body = {
-        email: user?.email,
-      };
-      axios
-        .post("/order", body)
-        .then((r) => r.data)
-        .then((data) => {
+    const dataToDb = async () => {
+      if (isAuthenticated && !allItems.length) {
+        const body = {
+          email: user?.email,
+        };
+
+        try {
+          const response = await axios.post("/order", body);
+          const data = response.data;
           dispatch(setUserOrderCase(data));
-          if (data.Items?.length) dispatch(getItems(data.Items));
+          if (data.Items?.length) {
+            dispatch(getItems(data.Items));
+          }
           console.log("DB Order");
-        })
-        .catch((error) => console.log(error));
-    }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+
+    dataToDb();
   }, [isAuthenticated, user, allItems, dispatch]);
+  
+  // useEffect(() => {
+  //   if (isAuthenticated && !allItems.length) {
+  //     const body = {
+  //       email: user?.email,
+  //     };
+  //     axios
+  //       .post("/order", body)
+  //       .then((r) => r.data)
+  //       .then((data) => {
+  //         dispatch(setUserOrderCase(data));
+  //         if (data.Items?.length) dispatch(getItems(data.Items));
+  //         console.log("DB Order");
+  //       })
+  //       .catch((error) => console.log(error));
+  //   }
+  // }, [isAuthenticated, user, allItems, dispatch]);
 
   const foodsPerPage = 8;
   const indexOfLastFood = currentPage * foodsPerPage;
@@ -77,25 +101,23 @@ const Viandas = () => {
 
       <SearchBar />
 
-        <Paginado
-          foodsPerPage={foodsPerPage}
-          foods={allFoods.length}
-          filterFoods={filteredFoods.length}
-          paginado={paginado}
-          currentPage={currentPage}
+      <Paginado
+        foodsPerPage={foodsPerPage}
+        foods={allFoods.length}
+        filterFoods={filteredFoods.length}
+        paginado={paginado}
+        currentPage={currentPage}
+      />
+      {!currentFoods.length ? (
+        <h1 className={styles.notFoundMessage}>No se encontraron resultados</h1>
+      ) : (
+        <CardsContainer
+          currentFoods={currentFoods}
+          allItems={allItems}
+          orderUser={orderUser}
         />
-        {!currentFoods.length ? (
-          <h1 className={styles.notFoundMessage}>
-            No se encontraron resultados
-          </h1>
-        ) : (
-          <CardsContainer
-            currentFoods={currentFoods}
-            allItems={allItems}
-            orderUser={orderUser}
-          />
-        )}
-      </div>
+      )}
+    </div>
     // </div>
   );
 };

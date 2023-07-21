@@ -47,7 +47,7 @@ const Orders = () => {
           onChange={handlePaymentFilterChange}
         >
           <option value="">Filtrar por estado de pago</option>
-          <option value="approved">Aprobado</option>
+          <option value="APROBADO">Aprobado</option>
           <option value="PENDIENTE">Pendiente</option>
         </select>
         <select
